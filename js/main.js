@@ -1,5 +1,6 @@
-require(["Box2dWeb-2.1.a.3.min", "level1"], function(box2dweb) {
-	  
+var world; // should world be global?
+
+function box2d_init(){
 	var b2Vec2 = Box2D.Common.Math.b2Vec2;
 	var b2AABB = Box2D.Collision.b2AABB;
 	var b2BodyDef = Box2D.Dynamics.b2BodyDef;
@@ -16,9 +17,9 @@ require(["Box2dWeb-2.1.a.3.min", "level1"], function(box2dweb) {
 	var SCALE = 30;
 	var gravity = new b2Vec2(0, 8);
 	var objects_can_sleep = true;
-	var world = new b2World(gravity, objects_can_sleep);
+	world = new b2World(gravity, objects_can_sleep);
 
-	level1(world);
+	choplifter(world);
 	 
 	 //setup debug draw
 	 var debugDraw = new b2DebugDraw();
@@ -26,7 +27,7 @@ require(["Box2dWeb-2.1.a.3.min", "level1"], function(box2dweb) {
 		debugDraw.SetDrawScale(SCALE);
 		debugDraw.SetFillAlpha(0.5);
 		debugDraw.SetLineThickness(0.5);
-		debugDraw.SetFlags(b2DebugDraw.e_shapeBit | b2DebugDraw.e_jointBit);
+		debugDraw.SetFlags(b2DebugDraw.e_shapeBit /* | b2DebugDraw.e_jointBit */);
 		world.SetDebugDraw(debugDraw);
 	 
 	 window.setInterval(update, 1000 / 60);
@@ -82,7 +83,6 @@ require(["Box2dWeb-2.1.a.3.min", "level1"], function(box2dweb) {
 	 //update
 	 
 	 function update() {
-	 
 		if(isMouseDown && (!mouseJoint)) {
 		   var body = getBodyAtMouse();
 		   if(body) {
@@ -105,7 +105,6 @@ require(["Box2dWeb-2.1.a.3.min", "level1"], function(box2dweb) {
 			  mouseJoint = null;
 		   }
 		}
-	 
 		world.Step(1 / 60, 10, 10);
 		world.DrawDebugData();
 		world.ClearForces();
@@ -133,5 +132,4 @@ require(["Box2dWeb-2.1.a.3.min", "level1"], function(box2dweb) {
 
 		return {x: x, y: y};
 	 }
-
-});
+};
