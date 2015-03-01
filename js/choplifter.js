@@ -10,8 +10,7 @@ function choplifter(world) {
 	var b2Vec2 = Box2D.Common.Math.b2Vec2;
 	var b2WeldJointDef =  Box2D.Dynamics.Joints.b2WeldJointDef;
 	var b2RevoluteJointDef = Box2D.Dynamics.Joints.b2RevoluteJointDef;
-	var SCALE = 30;
-
+	
 
 	//addedRect_ironbar_2_ (rect)
 	var bodyDefaddedRect_ironbar_2_ = new b2BodyDef;
@@ -1488,8 +1487,8 @@ function choplifter(world) {
 		new b2Vec2(45.897 / SCALE, 0.0 / SCALE),
 		new b2Vec2(1.897 / SCALE, 1.896 / SCALE),
 	], 3);
-	var physics_75_ = world.CreateBody(bodyDefphysics_75_)
-	physics_75_.CreateFixture(fixDefphysics_75_);
+	hatch2 = world.CreateBody(bodyDefphysics_75_)
+	hatch2.CreateFixture(fixDefphysics_75_);
 
 
 	//polygon4557 (polygon)
@@ -2313,10 +2312,10 @@ function choplifter(world) {
   	joint.upperAngle = Math.PI / 2;
     world.CreateJoint(joint);
 
-    //physics_57_ && physics_75_ (hatch2)
+    //physics_57_ && hatch2 (hatch2)
     joint = new b2RevoluteJointDef();
     joint.bodyA = physics_57_;
-    joint.bodyB = physics_75_;
+    joint.bodyB = hatch2;
     joint.localAnchorA.Set(0, 0);
   	joint.localAnchorB.Set(0, 0);
   	joint.enableLimit = true;
