@@ -1385,7 +1385,10 @@ function choplifter(world) {
 		new b2Vec2(0.61 / SCALE, -2.134 / SCALE),
 		new b2Vec2(14.435 / SCALE, 2.58 / SCALE),
 	], 3);
-	world.CreateBody(bodyDefpolygon4525).CreateFixture(fixDefpolygon4525);
+	righthook = world.CreateBody(bodyDefpolygon4525)
+	righthook.CreateFixture(fixDefpolygon4525);
+	var polygon4525_x = bodyDefpolygon4525.position.x * SCALE;
+	var polygon4525_y = bodyDefpolygon4525.position.y * SCALE;
 
 
 	//polygon4527 (polygon)
@@ -1397,12 +1400,18 @@ function choplifter(world) {
 	bodyDefpolygon4527.type = b2Body.b2_staticBody;
 	fixDefpolygon4527.shape = new b2PolygonShape;
 	bodyDefpolygon4527.position.Set(178.374 / SCALE, 306.413 / SCALE);
+
+	x_offset = polygon4525_x - 178.374; //1st
+	y_offset = polygon4525_y - 306.413; //2nd
+
 	fixDefpolygon4527.shape.SetAsArray([
-		new b2Vec2(0, 0),
-		new b2Vec2(2.19 / SCALE, -9.115 / SCALE),
-		new b2Vec2(4.125 / SCALE, -8.767 / SCALE),
+		new b2Vec2((0 - x_offset) / SCALE, (0 - y_offset) / SCALE),
+		new b2Vec2((2.19 - x_offset) / SCALE, (-9.115 - y_offset) / SCALE),
+		new b2Vec2((4.125 - x_offset) / SCALE, (-8.767 - y_offset) / SCALE),
 	], 3);
-	world.CreateBody(bodyDefpolygon4527).CreateFixture(fixDefpolygon4527);
+	var polygon4527 = world.CreateBody(bodyDefpolygon4527);
+	righthook.CreateFixture(fixDefpolygon4527);
+	righthook.SetActive(false);
 
 
 	//polygon4535 (polygon)
@@ -1419,7 +1428,10 @@ function choplifter(world) {
 		new b2Vec2(0.451 / SCALE, 2.138 / SCALE),
 		new b2Vec2(-13.988 / SCALE, 4.715 / SCALE),
 	], 3);
-	world.CreateBody(bodyDefpolygon4535).CreateFixture(fixDefpolygon4535);
+	lefthook = world.CreateBody(bodyDefpolygon4535)
+	lefthook.CreateFixture(fixDefpolygon4535);
+	var polygon4535_x = bodyDefpolygon4535.position.x * SCALE;
+	var polygon4535_y = bodyDefpolygon4535.position.y * SCALE;
 
 
 	//polygon4537 (polygon)
@@ -1431,12 +1443,18 @@ function choplifter(world) {
 	bodyDefpolygon4537.type = b2Body.b2_staticBody;
 	fixDefpolygon4537.shape = new b2PolygonShape;
 	bodyDefpolygon4537.position.Set(155.564 / SCALE, 297.456 / SCALE);
+
+	x_offset = polygon4535_x - 155.564; //1st
+	y_offset = polygon4535_y - 297.456; //2nd
+
 	fixDefpolygon4537.shape.SetAsArray([
-		new b2Vec2(0, 0),
-		new b2Vec2(2.186 / SCALE, 9.11 / SCALE),
-		new b2Vec2(-1.939 / SCALE, 0.346 / SCALE),
+		new b2Vec2((0 - x_offset) / SCALE, (0 - y_offset) / SCALE),
+		new b2Vec2((2.186 - x_offset) / SCALE, (9.11 - y_offset) / SCALE),
+		new b2Vec2((-1.939 - x_offset) / SCALE, (0.346 - y_offset) / SCALE),
 	], 3);
-	world.CreateBody(bodyDefpolygon4537).CreateFixture(fixDefpolygon4537);
+	var polygon4537 = world.CreateBody(bodyDefpolygon4537)
+	lefthook.CreateFixture(fixDefpolygon4537);
+	lefthook.SetActive(false);
 
 
 	//polygon4546 (polygon)
@@ -2060,6 +2078,7 @@ function choplifter(world) {
 	var circle_18_ = world.CreateBody(bodyDefcircle_18_)
 	chopperFaceRight.CreateFixture(fixDefcircle_18_);
 	
+	chopperFaceRight.angularDamping = 0.5;
 	chopperFaceRight.SetActive(true)
 	///END CHOPPER FACERIGHT///
 	
@@ -2067,16 +2086,16 @@ function choplifter(world) {
 	//circle_6_ (circle)
 	var bodyDefcircle_6_ = new b2BodyDef;
 	var fixDefcircle_6_ = new b2FixtureDef;
-	fixDefcircle_6_.density = 0.5;
+	fixDefcircle_6_.density = 0.8;
 	fixDefcircle_6_.friction = 0.5;
 	fixDefcircle_6_.restitution = 0;
 	bodyDefcircle_6_.type = b2Body.b2_dynamicBody;
 	fixDefcircle_6_.shape = new b2CircleShape(8.501 / SCALE);
 	bodyDefcircle_6_.position.Set(161.12 / SCALE, 279.949 / SCALE);
-	var chopperFaceLeft = world.CreateBody(bodyDefcircle_6_);
+	chopperFaceLeft = world.CreateBody(bodyDefcircle_6_);
 	chopperFaceLeft.CreateFixture(fixDefcircle_6_);
-	var chopperFaceRight_X = bodyDefcircle_6_.position.x * SCALE;
-	var chopperFaceRight_Y = bodyDefcircle_6_.position.y * SCALE;
+	var chopperFaceLeft_X = bodyDefcircle_6_.position.x * SCALE;
+	var chopperFaceLeft_Y = bodyDefcircle_6_.position.y * SCALE;
 
 	//polygon5118 (polygon)
 	var bodyDefpolygon5118 = new b2BodyDef;
@@ -2088,8 +2107,8 @@ function choplifter(world) {
 	fixDefpolygon5118.shape = new b2PolygonShape;
 	bodyDefpolygon5118.position.Set(168.287 / SCALE, 278.234 / SCALE);
 
-	x_offset = chopperFaceRight_X - 168.287; //1st
-	y_offset = chopperFaceRight_Y - 278.234; //2nd
+	x_offset = chopperFaceLeft_X - 168.287; //1st
+	y_offset = chopperFaceLeft_Y - 278.234; //2nd
 
 	fixDefpolygon5118.shape.SetAsArray([
 		new b2Vec2((0 - x_offset) / SCALE, (0 - y_offset) / SCALE),
@@ -2110,8 +2129,8 @@ function choplifter(world) {
 	fixDefpolygon5120.shape = new b2PolygonShape;
 	bodyDefpolygon5120.position.Set(176.527 / SCALE, 290.018 / SCALE);
 
-	x_offset = chopperFaceRight_X - 176.527; //1st
-	y_offset = chopperFaceRight_Y - 290.018; //2nd
+	x_offset = chopperFaceLeft_X - 176.527; //1st
+	y_offset = chopperFaceLeft_Y - 290.018; //2nd
 
 	fixDefpolygon5120.shape.SetAsArray([
 		new b2Vec2((0 - x_offset) / SCALE, (0 - y_offset) / SCALE),
@@ -2132,8 +2151,8 @@ function choplifter(world) {
 	fixDefpolygon5123.shape = new b2PolygonShape;
 	bodyDefpolygon5123.position.Set(140.785 / SCALE, 266.833 / SCALE);
 
-	x_offset = chopperFaceRight_X - 140.785; //1st
-	y_offset = chopperFaceRight_Y - 266.833; //2nd
+	x_offset = chopperFaceLeft_X - 140.785; //1st
+	y_offset = chopperFaceLeft_Y - 266.833; //2nd
 
 	fixDefpolygon5123.shape.SetAsArray([
 		new b2Vec2((0 - x_offset) / SCALE, (0 - y_offset) / SCALE),
@@ -2152,8 +2171,8 @@ function choplifter(world) {
 	fixDefcircle_10_.restitution = 0;
 	bodyDefcircle_10_.type = b2Body.b2_dynamicBody;
 	
-	x_offset = 197.57 - chopperFaceRight_X; //1st
-	y_offset = 279.95 - chopperFaceRight_Y; //2nd
+	x_offset = 197.57 - chopperFaceLeft_X; //1st
+	y_offset = 279.95 - chopperFaceLeft_Y; //2nd
 
 	var circleShape = new b2CircleShape(5.174 / SCALE);
 	circleShape.m_p.Set(x_offset / SCALE, y_offset / SCALE); 
@@ -2163,6 +2182,7 @@ function choplifter(world) {
 	var circle_10_ = world.CreateBody(bodyDefcircle_10_)
 	chopperFaceLeft.CreateFixture(fixDefcircle_10_);
 
+	chopperFaceLeft.angularDamping = 0.5;
 	chopperFaceLeft.SetActive(false)
 	///END CHOPPER FACELEFT///
 

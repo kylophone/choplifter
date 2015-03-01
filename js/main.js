@@ -1,5 +1,3 @@
-var world; // should world be global?
-
 function box2d_init(){
 	var b2Vec2 = Box2D.Common.Math.b2Vec2;
 	var b2AABB = Box2D.Collision.b2AABB;
@@ -17,7 +15,7 @@ function box2d_init(){
 	var SCALE = 30;
 	var gravity = new b2Vec2(0, 8);
 	var objects_can_sleep = true;
-	world = new b2World(gravity, objects_can_sleep);
+	var world = new b2World(gravity, objects_can_sleep);
 
 	choplifter(world);
 	 
@@ -27,11 +25,41 @@ function box2d_init(){
 		debugDraw.SetDrawScale(SCALE);
 		debugDraw.SetFillAlpha(0.5);
 		debugDraw.SetLineThickness(0.5);
-		debugDraw.SetFlags(b2DebugDraw.e_shapeBit /* | b2DebugDraw.e_jointBit */);
+		debugDraw.SetFlags(b2DebugDraw.e_shapeBit);
 		world.SetDebugDraw(debugDraw);
 	 
 	 window.setInterval(update, 1000 / 60);
 	 
+	 //kybd
+	 var chopperForce = new b2Vec2(0, -1);
+	 var yVector = -2.1; 
+	 document.addEventListener("keydown", function(e){
+
+	 	switch(e.keyCode) {
+	 		case 74: //j
+	 			yVector -= 0.03;
+	 			break;
+	 		case 70: //f
+	 			if (chopperForce.y < 0) {
+	 				yVector += 0.02;
+	 			}
+	 			break; 
+	 		case 75: //k
+	 			if (activeChopper.GetAngle() < ((2 * Math.PI) * (15 / 360))) {
+	 				activeChopper.ApplyTorque(0.6);
+	 			}
+	 			break;
+	 		case 68: //d
+	 			if (activeChopper.GetAngle() > (-1 * (2 * Math.PI) * (15 / 360))) {
+	 				activeChopper.ApplyTorque(-0.6);
+	 			}
+	 			activeChopper.ApplyTorque(-0.6);
+	 			break;
+	 	};
+
+	 }, true);
+
+
 	 //mouse
 	 
 	 var mouseX, mouseY, mousePVec, isMouseDown, selectedBody, mouseJoint;
@@ -80,9 +108,36 @@ function box2d_init(){
 	 }
 	 
 	 
+	 var activeChopper = chopperFaceRight;
+	 var inactiveChopper = chopperFaceLeft;
+
 	 //update
-	 
 	 function update() {
+	 	inactiveChopper.SetPosition(activeChopper.GetWorldCenter());
+	 	inactiveChopper.SetAngle(activeChopper.GetAngle());
+	 	inactiveChopper.SetLinearVelocity(activeChopper.GetLinearVelocity());
+	 	inactiveChopper.SetAngularVelocity(activeChopper.GetAngularVelocity());
+
+	 	//righthook.SetPosition(new b2Vec2(activeChopper.GetWorldCenter().x, activeChopper.GetWorldCenter().y + (10 / SCALE)));
+	 	//lefthook.SetPosition(new b2Vec2(activeChopper.GetWorldCenter().x, activeChopper.GetWorldCenter().y + (10 / SCALE)));
+
+	 	if (activeChopper.GetLinearVelocity().x < 0.1) {
+	 		activeChopper = chopperFaceLeft;
+	 		inactiveChopper = chopperFaceRight;
+	 		chopperFaceRight.SetActive(false);
+	 		chopperFaceLeft.SetActive(true);
+	 	} else if (activeChopper.GetLinearVelocity().x > -0.1) {
+	 		activeChopper = chopperFaceRight;
+	 		inactiveChopper = chopperFaceLeft;
+	 		chopperFaceLeft.SetActive(false);
+	 		chopperFaceRight.SetActive(true);
+	 	}
+
+	 	limit_chopper_angle();
+	 	activeChopper.ApplyForce(update_chopper_forces(), activeChopper.GetWorldCenter());
+	 	//console.log(updateForce);
+
+
 		if(isMouseDown && (!mouseJoint)) {
 		   var body = getBodyAtMouse();
 		   if(body) {
@@ -110,9 +165,7 @@ function box2d_init(){
 		world.ClearForces();
 	 };
 	 
-	 //helpers
-	 
-	 //http://js-tut.aardon.de/js-tut/tutorial/position.html
+
 	 function getElementPosition(element) {
 		var elem=element, tagname="", x=0, y=0;
 	   
@@ -132,4 +185,27 @@ function box2d_init(){
 
 		return {x: x, y: y};
 	 }
+
+	function limit_chopper_angle() {
+		if (activeChopper.GetAngle() > ((2 * Math.PI) * (20 / 360))) {
+	 		activeChopper.SetAngularVelocity(0);
+	 	} else if (activeChopper.GetAngle() < (-1 * (2 * Math.PI) * (20 / 360))) {
+	 		activeChopper.SetAngularVelocity(0);
+	 	}
+	}
+
+	function update_chopper_forces() {
+		updateForce = activeChopper.GetWorldVector(chopperForce);
+		updateForce.y += yVector;
+
+	 	if (updateForce.y < -3.3) {
+	 		yVector += 0.03;
+	 		updateForce.y = -3.3;
+	 	}
+
+	 	if (updateForce.y > 0) {
+			updateForce.y = 0;
+		}
+		return updateForce;
+	}
 };
