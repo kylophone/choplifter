@@ -1,4 +1,3 @@
-
 //body & fixture setup. also joints.   
 function choplifter(world) {  
 	var b2BodyDef = Box2D.Dynamics.b2BodyDef;
@@ -10,7 +9,7 @@ function choplifter(world) {
 	var b2Vec2 = Box2D.Common.Math.b2Vec2;
 	var b2WeldJointDef =  Box2D.Dynamics.Joints.b2WeldJointDef;
 	var b2RevoluteJointDef = Box2D.Dynamics.Joints.b2RevoluteJointDef;
-	
+
 
 	//addedRect_ironbar_2_ (rect)
 	var bodyDefaddedRect_ironbar_2_ = new b2BodyDef;
@@ -2077,7 +2076,7 @@ function choplifter(world) {
 	var circle_18_ = world.CreateBody(bodyDefcircle_18_)
 	chopperFaceRight.CreateFixture(fixDefcircle_18_);
 	
-	chopperFaceRight.angularDamping = 0.5;
+	chopperFaceRight.angularDamping = 5;
 	chopperFaceRight.SetActive(true)
 	///END CHOPPER FACERIGHT///
 	
@@ -2181,7 +2180,7 @@ function choplifter(world) {
 	var circle_10_ = world.CreateBody(bodyDefcircle_10_)
 	chopperFaceLeft.CreateFixture(fixDefcircle_10_);
 
-	chopperFaceLeft.angularDamping = 0.5;
+	chopperFaceLeft.angularDamping = 5;
 	chopperFaceLeft.SetActive(false)
 	///END CHOPPER FACELEFT///
 

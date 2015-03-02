@@ -19,8 +19,8 @@ function box2d_init(){
 
 	choplifter(world);
 	 
-	 //setup debug draw
-	 var debugDraw = new b2DebugDraw();
+	//setup debug draw
+	var debugDraw = new b2DebugDraw();
 		debugDraw.SetSprite(document.getElementById("canvas").getContext("2d"));
 		debugDraw.SetDrawScale(SCALE);
 		debugDraw.SetFillAlpha(0.5);
@@ -33,6 +33,7 @@ function box2d_init(){
 	 //kybd
 	 var chopperForce = new b2Vec2(0, -1);
 	 var yVector = -2.1; 
+	
 	 document.addEventListener("keydown", function(e){
 
 	 	switch(e.keyCode) {
@@ -113,7 +114,6 @@ function box2d_init(){
 
 	 //update
 	 function update() {
-	 	
 	 	limit_chopper_angle();
 	 	activeChopper.ApplyForce(update_chopper_forces(), activeChopper.GetWorldCenter());
 	 	update_inactive_chopper();
@@ -205,7 +205,7 @@ function box2d_init(){
 	 	if (updateForce.y > -3) {
 			updateForce.y = -3;
 		}
-		console.log(updateForce);
+		//console.log(updateForce);
 		return updateForce;
 	}
 };
