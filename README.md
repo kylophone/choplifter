@@ -1,6 +1,6 @@
 #choplifter
 
-Inside the <a href="http://en.wikipedia.org/wiki/Teenage_Engineering_OP-1">Teenage Engineering OP-1</a>, there's a beautiful little choplifter game. This repository is a javascript clone. Still in-progress.
+Inside the <a href="http://en.wikipedia.org/wiki/Teenage_Engineering_OP-1">Teenage Engineering OP-1</a>, there's a beautiful little choplifter game. This is a javascript clone // still in-progress.
 
 ##demo
 <b>Playable demo <a href = "http://104.236.207.104/">here!</a></b> Try pressing keys `d`, `f`, `j`, & `k`. You can also you use your mouse to toss the objects around. 
