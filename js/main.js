@@ -54,7 +54,6 @@ function box2d_init(){
 	 			if (activeChopper.GetAngle() > (-1 * (2 * Math.PI) * (15 / 360))) {
 	 				activeChopper.ApplyTorque(-0.6);
 	 			}
-	 			activeChopper.ApplyTorque(-0.6);
 	 			break;
 	 	};
 

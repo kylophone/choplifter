@@ -2076,7 +2076,7 @@ function choplifter(world) {
 	var circle_18_ = world.CreateBody(bodyDefcircle_18_)
 	chopperFaceRight.CreateFixture(fixDefcircle_18_);
 	
-	chopperFaceRight.angularDamping = 5;
+	chopperFaceRight.angularDamping = 3;
 	chopperFaceRight.SetActive(true)
 	///END CHOPPER FACERIGHT///
 	
@@ -2180,7 +2180,7 @@ function choplifter(world) {
 	var circle_10_ = world.CreateBody(bodyDefcircle_10_)
 	chopperFaceLeft.CreateFixture(fixDefcircle_10_);
 
-	chopperFaceLeft.angularDamping = 5;
+	chopperFaceLeft.angularDamping = 3;
 	chopperFaceLeft.SetActive(false)
 	///END CHOPPER FACELEFT///
 
