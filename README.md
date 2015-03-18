@@ -6,7 +6,7 @@ Inside the <a href="http://en.wikipedia.org/wiki/Teenage_Engineering_OP-1">Teena
 <b>Playable demo <a href = "http://104.236.207.104/">here!</a></b><br>Try pressing keys `d`, `f`, `j`, & `k`. You can also you use your mouse cursor to toss the objects around. 
 
 ##lander.svg
-After running `binwalk` on the firmware for the OP-1, poke around the files and you'll find lots of interesting things. You'll see that all of the OP-1's display & animations are done by manipulating svg files. There's a file called `lander.svg` which lays out everything in the choplifter world, including its physics layer.
+After running `binwalk` on the firmware for the OP-1, poke around the files and you'll find lots of interesting things. You'll see that all of the OP-1's display & animations are done by manipulating svg images. There's a file called `lander.svg` which reveals everything in the choplifter world, including its physics layer.
 
 ##Box2D
 Having the lander.svg image is nice, but it'd also be nice to know more about which physics engine TE's game uses. Fortunately, there's a few clues in the OP-1 firmware. If you run the `strings` command with the file `OP1_vdk.ldr` you'll find that there's still quite a bit of ASCII still hiding in the firmware. Most of this is probably debug info, but it tells us a lot about how the OP-1 and choplifter were built.
