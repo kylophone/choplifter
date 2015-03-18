@@ -186,8 +186,10 @@ function box2d_init(){
 
 	function limit_chopper_angle() {
 		if (activeChopper.GetAngle() > ((2 * Math.PI) * (20 / 360))) {
+			activeChopper.SetAngle((2 * Math.PI) * (20 / 360))
 	 		activeChopper.SetAngularVelocity(0);
 	 	} else if (activeChopper.GetAngle() < (-1 * (2 * Math.PI) * (20 / 360))) {
+	 		activeChopper.SetAngle(-1 * (2 * Math.PI) * (20 / 360))
 	 		activeChopper.SetAngularVelocity(0);
 	 	}
 	}
