@@ -1368,7 +1368,7 @@ function choplifter(world) {
 	], 3);
 	world.CreateBody(bodyDefphysics_54_).CreateFixture(fixDefphysics_54_);
 
-
+	//RIGHT HOOK STARTS HERE
 	//polygon4525 (polygon)
 	var bodyDefpolygon4525 = new b2BodyDef;
 	var fixDefpolygon4525 = new b2FixtureDef;
@@ -1410,8 +1410,9 @@ function choplifter(world) {
 	var polygon4527 = world.CreateBody(bodyDefpolygon4527);
 	righthook.CreateFixture(fixDefpolygon4527);
 	righthook.SetActive(false);
+	//RIGHTHOOK ENDS HERE
 
-
+	//LEFTHOOK STARTS HERE
 	//polygon4535 (polygon)
 	var bodyDefpolygon4535 = new b2BodyDef;
 	var fixDefpolygon4535 = new b2FixtureDef;
@@ -1453,7 +1454,7 @@ function choplifter(world) {
 	var polygon4537 = world.CreateBody(bodyDefpolygon4537)
 	lefthook.CreateFixture(fixDefpolygon4537);
 	lefthook.SetActive(false);
-
+	//LEFTHOOK ENDS HERE
 
 	//polygon4546 (polygon)
 	var bodyDefpolygon4546 = new b2BodyDef;
