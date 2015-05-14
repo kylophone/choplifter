@@ -1375,7 +1375,7 @@ function choplifter(world) {
 	fixDefpolygon4525.density = 0.5;
 	fixDefpolygon4525.friction = 0.5;
 	fixDefpolygon4525.restitution = 0.4;
-	bodyDefpolygon4525.type = b2Body.b2_staticBody;
+	bodyDefpolygon4525.type = b2Body.b2_dynamicBody;
 	fixDefpolygon4525.shape = new b2PolygonShape;
 	bodyDefpolygon4525.position.Set(168.064 / SCALE, 295.066 / SCALE);
 	fixDefpolygon4525.shape.SetAsArray([
@@ -1395,7 +1395,7 @@ function choplifter(world) {
 	fixDefpolygon4527.density = 0.5;
 	fixDefpolygon4527.friction = 0.5;
 	fixDefpolygon4527.restitution = 0.4;
-	bodyDefpolygon4527.type = b2Body.b2_staticBody;
+	bodyDefpolygon4527.type = b2Body.b2_dynamicBody;
 	fixDefpolygon4527.shape = new b2PolygonShape;
 	bodyDefpolygon4527.position.Set(178.374 / SCALE, 306.413 / SCALE);
 
@@ -1409,7 +1409,7 @@ function choplifter(world) {
 	], 3);
 	var polygon4527 = world.CreateBody(bodyDefpolygon4527);
 	righthook.CreateFixture(fixDefpolygon4527);
-	righthook.SetActive(false);
+	righthook.SetActive(true);
 	//RIGHTHOOK ENDS HERE
 
 	//LEFTHOOK STARTS HERE
@@ -1419,7 +1419,7 @@ function choplifter(world) {
 	fixDefpolygon4535.density = 0.5;
 	fixDefpolygon4535.friction = 0.5;
 	fixDefpolygon4535.restitution = 0.4;
-	bodyDefpolygon4535.type = b2Body.b2_staticBody;
+	bodyDefpolygon4535.type = b2Body.b2_dynamicBody;
 	fixDefpolygon4535.shape = new b2PolygonShape;
 	bodyDefpolygon4535.position.Set(167.613 / SCALE, 293.087 / SCALE);
 	fixDefpolygon4535.shape.SetAsArray([
@@ -1439,7 +1439,7 @@ function choplifter(world) {
 	fixDefpolygon4537.density = 0.5;
 	fixDefpolygon4537.friction = 0.5;
 	fixDefpolygon4537.restitution = 0.4;
-	bodyDefpolygon4537.type = b2Body.b2_staticBody;
+	bodyDefpolygon4537.type = b2Body.b2_dynamicBody;
 	fixDefpolygon4537.shape = new b2PolygonShape;
 	bodyDefpolygon4537.position.Set(155.564 / SCALE, 297.456 / SCALE);
 
@@ -1453,7 +1453,7 @@ function choplifter(world) {
 	], 3);
 	var polygon4537 = world.CreateBody(bodyDefpolygon4537)
 	lefthook.CreateFixture(fixDefpolygon4537);
-	lefthook.SetActive(false);
+	lefthook.SetActive(true);
 	//LEFTHOOK ENDS HERE
 
 	//polygon4546 (polygon)
@@ -2317,6 +2317,16 @@ function choplifter(world) {
     joint.bodyA = physics_57_;
     joint.bodyB = hatch2;
     joint.localAnchorA.Set(0, 0);
+  	joint.localAnchorB.Set(0, 0);
+  	joint.enableLimit = true;
+  	joint.upperAngle = Math.PI / 2;
+    world.CreateJoint(joint);
+
+    //lefthook && righthook (heli_hook)
+    joint = new b2RevoluteJointDef();
+    joint.bodyA = lefthook;
+    joint.bodyB = righthook;
+    joint.localAnchorA.Set(0, 2.186 / SCALE);
   	joint.localAnchorB.Set(0, 0);
   	joint.enableLimit = true;
   	joint.upperAngle = Math.PI / 2;
