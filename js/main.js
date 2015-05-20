@@ -13,7 +13,7 @@ function box2d_init(){
 	SCALE = 30;
 	var gravity = new b2Vec2(0, 8);
 	var objects_can_sleep = true;
-	world = new b2World(gravity, objects_can_sleep);
+	var world = new b2World(gravity, objects_can_sleep);
 
 	choplifter(world);
 	 
@@ -26,63 +26,59 @@ function box2d_init(){
 	debugDraw.SetFlags(b2DebugDraw.e_shapeBit | b2DebugDraw.e_jointBit);
 	world.SetDebugDraw(debugDraw);
 	 
-	 window.setInterval(update, 1000 / 60);
+    window.setInterval(update, 1000 / 60);
 	 
-	 //kybd
-	 var chopperForce = new b2Vec2(0, -1);
-	 var yVector = -2.1; 
 	
-	 //mouse
-	 
-	 var mouseX, mouseY, mousePVec, isMouseDown, selectedBody, mouseJoint;
-	 var canvas = document.getElementById("canvas");
-	 var canvasPosition = getElementPosition(canvas);
-	 
-	 document.addEventListener("mousedown", function(e) {
-		isMouseDown = true;
-		handleMouseMove(e);
-		document.addEventListener("mousemove", handleMouseMove, true);
-	 }, true);
-	 
-	 document.addEventListener("mouseup", function() {
-		document.removeEventListener("mousemove", handleMouseMove, true);
-		isMouseDown = false;
-		mouseX = undefined;
-		mouseY = undefined;
-	 }, true);
-	 
-	 function handleMouseMove(e) {
-		mouseX = (e.clientX - canvasPosition.x) / SCALE;
+	//mouse
+    var mouseX, mouseY, mousePVec, isMouseDown, selectedBody, mouseJoint;
+    var canvas = document.getElementById("canvas");
+    var canvasPosition = getElementPosition(canvas);
+ 
+    document.addEventListener("mousedown", function(e) {
+        isMouseDown = true;
+        handleMouseMove(e);
+        document.addEventListener("mousemove", handleMouseMove, true);
+    }, true);
+ 
+    document.addEventListener("mouseup", function() {
+        document.removeEventListener("mousemove", handleMouseMove, true);
+        isMouseDown = false;
+        mouseX = undefined;
+        mouseY = undefined;
+    }, true);
+
+    function handleMouseMove(e) {
+        mouseX = (e.clientX - canvasPosition.x) / SCALE;
 		mouseY = (e.clientY - canvas.getBoundingClientRect().top) / SCALE;
-	 };
+    };
 	 
-	 function getBodyAtMouse() {
+    function getBodyAtMouse() {
 		mousePVec = new b2Vec2(mouseX, mouseY);
 		var aabb = new b2AABB();
 		aabb.lowerBound.Set(mouseX - 0.001, mouseY - 0.001);
 		aabb.upperBound.Set(mouseX + 0.001, mouseY + 0.001);
 		
 		// Query the world for overlapping shapes.
-
 		selectedBody = null;
 		world.QueryAABB(getBodyCB, aabb);
 		return selectedBody;
-	 }
+    }
 
-	 function getBodyCB(fixture) {
-		if(fixture.GetBody().GetType() != b2Body.b2_staticBody) {
-		   if(fixture.GetShape().TestPoint(fixture.GetBody().GetTransform(), mousePVec)) {
-			  selectedBody = fixture.GetBody();
-			  return false;
-		   }
-		}
-		return true;
-	 }
+    function getBodyCB(fixture) {
+        if(fixture.GetBody().GetType() != b2Body.b2_staticBody) {
+            if(fixture.GetShape().TestPoint(fixture.GetBody().GetTransform(), mousePVec)) {
+                selectedBody = fixture.GetBody();
+                return false;
+            }
+        }
+        return true;
+    }
 	 	
+	var activeChopper = chopperFaceRight;
+    var inactiveChopper = chopperFaceLeft;
+    var chopperForce = new b2Vec2(0, -1);
+    var yVector = -2.1; 
 
-	 var activeChopper = chopperFaceRight;
-	 var inactiveChopper = chopperFaceLeft;
-	
     //detect keypress 	
 	document.addEventListener("keydown", function(e){
 	 	switch(e.keyCode) {
@@ -118,13 +114,13 @@ function box2d_init(){
 	 }, true);
 
 
-	 //update
-	 function update() {
-	 	limit_chopper_angle();
-	 	activeChopper.ApplyForce(update_chopper_forces(), activeChopper.GetWorldCenter());
+    //update
+    function update() {
+        limit_chopper_angle();
+        activeChopper.ApplyForce(update_chopper_forces(), activeChopper.GetWorldCenter());
 	 	//update_choppers();
 
-		if(isMouseDown && (!mouseJoint)) {
+        if(isMouseDown && (!mouseJoint)) {
 		   var body = getBodyAtMouse();
 		   if(body) {
 			  var md = new b2MouseJointDef();
@@ -172,8 +168,8 @@ function box2d_init(){
 		return {x: x, y: y};
 	 }
 
-	function update_choppers() {
-		inactiveChopper.SetPosition(activeChopper.GetWorldCenter());
+    function update_choppers() {
+        inactiveChopper.SetPosition(activeChopper.GetWorldCenter());
 	 	inactiveChopper.SetAngle(activeChopper.GetAngle());
 	 	inactiveChopper.SetLinearVelocity(activeChopper.GetLinearVelocity());
 	 	inactiveChopper.SetAngularVelocity(activeChopper.GetAngularVelocity());
@@ -193,9 +189,8 @@ function box2d_init(){
 	}
 
 	function update_hook(){
-		joint.bodyB = activeChopper;
-	 	world.CreateJoint(joint);
-	}
+	    //Change joint to reflect active chopper.
+    }
 
 	function limit_chopper_angle() {
 		if (activeChopper.GetAngle() > ((2 * Math.PI) * (20 / 360))) {
