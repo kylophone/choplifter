@@ -7,26 +7,24 @@ function box2d_init(){
 	var b2Fixture = Box2D.Dynamics.b2Fixture;
 	var b2World = Box2D.Dynamics.b2World;
 	var b2MassData = Box2D.Collision.Shapes.b2MassData;
-	var b2PolygonShape = Box2D.Collision.Shapes.b2PolygonShape;
-	var b2CircleShape = Box2D.Collision.Shapes.b2CircleShape;
 	var b2DebugDraw = Box2D.Dynamics.b2DebugDraw;
 	var b2MouseJointDef =  Box2D.Dynamics.Joints.b2MouseJointDef;
 
 	SCALE = 30;
 	var gravity = new b2Vec2(0, 8);
 	var objects_can_sleep = true;
-	var world = new b2World(gravity, objects_can_sleep);
+	world = new b2World(gravity, objects_can_sleep);
 
 	choplifter(world);
 	 
 	//setup debug draw
 	var debugDraw = new b2DebugDraw();
-		debugDraw.SetSprite(document.getElementById("canvas").getContext("2d"));
-		debugDraw.SetDrawScale(SCALE);
-		debugDraw.SetFillAlpha(0.5);
-		debugDraw.SetLineThickness(0.5);
-		debugDraw.SetFlags(b2DebugDraw.e_shapeBit);
-		world.SetDebugDraw(debugDraw);
+	debugDraw.SetSprite(document.getElementById("canvas").getContext("2d"));
+	debugDraw.SetDrawScale(SCALE);
+	debugDraw.SetFillAlpha(0.5);
+	debugDraw.SetLineThickness(0.5);
+	debugDraw.SetFlags(b2DebugDraw.e_shapeBit | b2DebugDraw.e_jointBit);
+	world.SetDebugDraw(debugDraw);
 	 
 	 window.setInterval(update, 1000 / 60);
 	 
@@ -34,32 +32,6 @@ function box2d_init(){
 	 var chopperForce = new b2Vec2(0, -1);
 	 var yVector = -2.1; 
 	
-	 document.addEventListener("keydown", function(e){
-
-	 	switch(e.keyCode) {
-	 		case 74: //j
-	 			yVector -= 0.03;
-	 			break;
-	 		case 70: //f
-	 			if (chopperForce.y < 0) {
-	 				yVector += 0.02;
-	 			}
-	 			break; 
-	 		case 75: //k
-	 			if (activeChopper.GetAngle() < ((2 * Math.PI) * (15 / 360))) {
-	 				activeChopper.ApplyTorque(0.6);
-	 			}
-	 			break;
-	 		case 68: //d
-	 			if (activeChopper.GetAngle() > (-1 * (2 * Math.PI) * (15 / 360))) {
-	 				activeChopper.ApplyTorque(-0.6);
-	 			}
-	 			break;
-	 	};
-
-	 }, true);
-
-
 	 //mouse
 	 
 	 var mouseX, mouseY, mousePVec, isMouseDown, selectedBody, mouseJoint;
@@ -106,16 +78,51 @@ function box2d_init(){
 		}
 		return true;
 	 }
-	 
-	 
+	 	
+
 	 var activeChopper = chopperFaceRight;
 	 var inactiveChopper = chopperFaceLeft;
+	
+    //detect keypress 	
+	document.addEventListener("keydown", function(e){
+	 	switch(e.keyCode) {
+	 		case 74: //j
+	 			yVector -= 0.03;
+	 			break;
+            case 70: //f
+	 			if (chopperForce.y < 0) {
+	 				yVector += 0.02;
+	 			}
+	 			break; 
+	 		case 75: //k
+	 			if (activeChopper.GetAngle() < ((2 * Math.PI) * (15 / 360))) {
+	 				activeChopper.ApplyTorque(0.6);
+	 			}
+	 			break;
+	 		case 68: //d
+	 			if (activeChopper.GetAngle() > (-1 * (2 * Math.PI) * (15 / 360))) {
+	 				activeChopper.ApplyTorque(-0.6);
+	 			}
+	 			break;
+	 		case 76: //l
+				hookDistanceJoint.m_length -= (1.5 / SCALE);
+	 			break;
+	 		case 83: //s
+	 			hookDistanceJoint.m_length += (1.5 / SCALE);
+	 			break;
+	 		case 186: //;
+	 			break;
+	 		case 65: //a
+	 			break;
+	 	};
+	 }, true);
+
 
 	 //update
 	 function update() {
 	 	limit_chopper_angle();
 	 	activeChopper.ApplyForce(update_chopper_forces(), activeChopper.GetWorldCenter());
-	 	update_inactive_chopper();
+	 	//update_choppers();
 
 		if(isMouseDown && (!mouseJoint)) {
 		   var body = getBodyAtMouse();
@@ -165,7 +172,7 @@ function box2d_init(){
 		return {x: x, y: y};
 	 }
 
-	function update_inactive_chopper() {
+	function update_choppers() {
 		inactiveChopper.SetPosition(activeChopper.GetWorldCenter());
 	 	inactiveChopper.SetAngle(activeChopper.GetAngle());
 	 	inactiveChopper.SetLinearVelocity(activeChopper.GetLinearVelocity());
@@ -182,6 +189,12 @@ function box2d_init(){
 	 		chopperFaceRight.SetActive(false);
 	 		chopperFaceLeft.SetActive(true);
 	 	}
+	 	update_hook();
+	}
+
+	function update_hook(){
+		joint.bodyB = activeChopper;
+	 	world.CreateJoint(joint);
 	}
 
 	function limit_chopper_angle() {
@@ -206,7 +219,7 @@ function box2d_init(){
 	 	if (updateForce.y > -3) {
 			updateForce.y = -3;
 		}
-		//console.log(updateForce);
 		return updateForce;
 	}
+
 };
