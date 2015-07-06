@@ -1889,6 +1889,7 @@ function choplifter(world) {
 	var polygon5048 = world.CreateBody(bodyDefpolygon5048)
 	polygon5048.CreateFixture(fixDefpolygon5048);
 
+    var chopperDensity = 50;
 
 	///CHOPPER FACERIGHT///
 	//circle_17_ (circle)
@@ -1896,7 +1897,7 @@ function choplifter(world) {
 	var fixDefcircle_17_ = new b2FixtureDef;
 	fixDefcircle_17_.filter.categoryBits = 2;
     fixDefcircle_17_.filter.maskBits = 1;
-	fixDefcircle_17_.density = 50;
+	fixDefcircle_17_.density = chopperDensity;
 	fixDefcircle_17_.friction = 0.5;
 	fixDefcircle_17_.restitution = 0;
 	bodyDefcircle_17_.type = b2Body.b2_dynamicBody;
@@ -1912,7 +1913,7 @@ function choplifter(world) {
 	var fixDefpolygon5132 = new b2FixtureDef;
 	fixDefpolygon5132.filter.categoryBits = 2;
 	fixDefpolygon5132.filter.maskBits = 1;
-	fixDefpolygon5132.density = 50;
+	fixDefpolygon5132.density = chopperDensity;
 	fixDefpolygon5132.friction = 0.5;
 	fixDefpolygon5132.restitution = 0;
 	bodyDefpolygon5132.type = b2Body.b2_dynamicBody;
@@ -1936,7 +1937,7 @@ function choplifter(world) {
 	var fixDefpolygon5127 = new b2FixtureDef;
 	fixDefpolygon5127.filter.categoryBits = 2;
 	fixDefpolygon5127.filter.maskBits = 1;
-	fixDefpolygon5127.density = 50;
+	fixDefpolygon5127.density = chopperDensity;
 	fixDefpolygon5127.friction = 0.5;
 	fixDefpolygon5127.restitution = 0;
 	bodyDefpolygon5127.type = b2Body.b2_dynamicBody;
@@ -1960,7 +1961,7 @@ function choplifter(world) {
 	var fixDefpolygon5129 = new b2FixtureDef;
 	fixDefpolygon5129.filter.categoryBits = 2;
 	fixDefpolygon5129.filter.maskBits = 1;
-	fixDefpolygon5129.density = 50;
+	fixDefpolygon5129.density = chopperDensity;
 	fixDefpolygon5129.friction = 0.5;
 	fixDefpolygon5129.restitution = 0;
 	bodyDefpolygon5129.type = b2Body.b2_dynamicBody;
@@ -1984,7 +1985,7 @@ function choplifter(world) {
 	var fixDefcircle_18_ = new b2FixtureDef;
 	fixDefcircle_18_.filter.categoryBits = 2;
 	fixDefcircle_18_.filter.maskBits = 1;
-	fixDefcircle_18_.density = 50;
+	fixDefcircle_18_.density = chopperDensity;
 	fixDefcircle_18_.friction = 0.5;
 	fixDefcircle_18_.restitution = 0;
 	bodyDefcircle_18_.type = b2Body.b2_dynamicBody;
@@ -2010,7 +2011,7 @@ function choplifter(world) {
 	var fixDefcircle_6_ = new b2FixtureDef;
 	fixDefcircle_6_.filter.categoryBits = 2;
 	fixDefcircle_6_.filter.maskBits = 1;
-	fixDefcircle_6_.density = 50;
+	fixDefcircle_6_.density = chopperDensity;
 	fixDefcircle_6_.friction = 0.5;
 	fixDefcircle_6_.restitution = 0;
 	bodyDefcircle_6_.type = b2Body.b2_dynamicBody;
@@ -2026,7 +2027,7 @@ function choplifter(world) {
 	var fixDefpolygon5118 = new b2FixtureDef;
 	fixDefpolygon5118.filter.categoryBits = 2;
 	fixDefpolygon5118.filter.maskBits = 1;
-	fixDefpolygon5118.density = 0.5;
+	fixDefpolygon5118.density = chopperDensity;
 	fixDefpolygon5118.friction = 50;
 	fixDefpolygon5118.restitution = 0;
 	bodyDefpolygon5118.type = b2Body.b2_dynamicBody;
@@ -2050,7 +2051,7 @@ function choplifter(world) {
 	var fixDefpolygon5120 = new b2FixtureDef;
 	fixDefpolygon5120.filter.categoryBits = 2;
 	fixDefpolygon5120.filter.maskBits = 1;
-	fixDefpolygon5120.density = 50;
+	fixDefpolygon5120.density = chopperDensity;
 	fixDefpolygon5120.friction = 0.5;
 	fixDefpolygon5120.restitution = 0;
 	bodyDefpolygon5120.type = b2Body.b2_dynamicBody;
@@ -2074,7 +2075,7 @@ function choplifter(world) {
 	var fixDefpolygon5123 = new b2FixtureDef;
 	fixDefpolygon5123.filter.categoryBits = 2;
 	fixDefpolygon5123.filter.maskBits = 1;
-	fixDefpolygon5123.density = 50;
+	fixDefpolygon5123.density = chopperDensity;
 	fixDefpolygon5123.friction = 0.5;
 	fixDefpolygon5123.restitution = 0;
 	bodyDefpolygon5123.type = b2Body.b2_dynamicBody;
@@ -2098,7 +2099,7 @@ function choplifter(world) {
 	var fixDefcircle_10_ = new b2FixtureDef;
 	fixDefcircle_10_.filter.categoryBits = 2;
 	fixDefcircle_10_.filter.maskBits = 1;
-	fixDefcircle_10_.density = 50;
+	fixDefcircle_10_.density = chopperDensity;
 	fixDefcircle_10_.friction = 0.5;
 	fixDefcircle_10_.restitution = 0;
 	bodyDefcircle_10_.type = b2Body.b2_dynamicBody;
@@ -2133,7 +2134,8 @@ function choplifter(world) {
 	bodyDefhookcenter.position.Set(168.064 / SCALE, 295.065 / SCALE);
 	hookcenter = world.CreateBody(bodyDefhookcenter);
 	hookcenter.CreateFixture(fixDefhookcenter);
-	hookcenter.SetActive(true);
+    hookcenter.SetLinearDamping(2);
+    hookcenter.SetActive(true);
 	//END HOOKCENTER
 
 
@@ -2371,26 +2373,12 @@ function choplifter(world) {
   	joint.upperAngle = Math.PI / 2;
     world.CreateJoint(joint);
 
-	//distance joint for activechopper and lefthook
-    joint = new b2DistanceJointDef();
-    joint.bodyA = chopperFaceRight;
-    joint.bodyB = hookcenter;
-  	joint.localAnchorA.Set(0, 0);
-    joint.localAnchorB.Set(0, 0);
-  	joint.length = 25 / SCALE;
-    joint.collideConnected = true;
-    joint.frequencyHz = 0;
-    joint.dampingRatio = 1;
-    hookDistanceJoint = world.CreateJoint(joint);
-    
     //lefthook && hookcenter
     joint = new b2RevoluteJointDef();
     joint.bodyA = lefthook;
     joint.bodyB = hookcenter;
     joint.localAnchorA.Set(0, 2.186 / SCALE);
   	joint.localAnchorB.Set(0, 0);
-  	//joint.enableLimit = true;
-  	//joint.upperAngle = Math.PI / 2;
     world.CreateJoint(joint);
 
     //righthook && hookcenter
@@ -2399,7 +2387,17 @@ function choplifter(world) {
     joint.bodyB = hookcenter;
     joint.localAnchorA.Set(0, 0);
   	joint.localAnchorB.Set(0, 0);
-  	//joint.enableLimit = true;
-  	//joint.upperAngle = Math.PI / 2;
     world.CreateJoint(joint);
+	  
+    //distance joint for chopper and hookcenter
+    newHookJoint = new b2DistanceJointDef();
+    newHookJoint.bodyB = chopperFaceRight;
+    newHookJoint.bodyA = hookcenter;
+  	newHookJoint.localAnchorA.Set(0, 0);
+    newHookJoint.localAnchorB.Set(0, 0);
+  	newHookJoint.length = 25 / SCALE;
+    newHookJoint.collideConnected = true;
+    newHookJoint.frequencyHz = 0;
+    newHookJoint.dampingRatio = 1;
+    hookDistanceJoint = world.CreateJoint(newHookJoint);
 }
