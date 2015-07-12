@@ -1889,7 +1889,7 @@ function choplifter(world) {
 	var polygon5048 = world.CreateBody(bodyDefpolygon5048)
 	polygon5048.CreateFixture(fixDefpolygon5048);
 
-    var chopperDensity = 50;
+    var chopperDensity = 2;
 
 	///CHOPPER FACERIGHT///
 	//circle_17_ (circle)
@@ -2126,7 +2126,7 @@ function choplifter(world) {
 	var fixDefhookcenter = new b2FixtureDef;
 	fixDefhookcenter.filter.categoryBits = 2;
 	fixDefhookcenter.filter.maskBits = 1;
-	fixDefhookcenter.density = .05;
+	fixDefhookcenter.density = 0;
 	fixDefhookcenter.friction = 0;
 	fixDefhookcenter.restitution = 0;
 	bodyDefhookcenter.type = b2Body.b2_dynamicBody;
@@ -2134,7 +2134,7 @@ function choplifter(world) {
 	bodyDefhookcenter.position.Set(168.064 / SCALE, 295.065 / SCALE);
 	hookcenter = world.CreateBody(bodyDefhookcenter);
 	hookcenter.CreateFixture(fixDefhookcenter);
-    hookcenter.SetLinearDamping(2);
+    hookcenter.SetLinearDamping(0.01);
     hookcenter.SetActive(true);
 	//END HOOKCENTER
 
@@ -2375,6 +2375,8 @@ function choplifter(world) {
 
     //lefthook && hookcenter
     joint = new b2RevoluteJointDef();
+    joint.lowerAngle = 0;
+    joint.upperAngle = 90;
     joint.bodyA = lefthook;
     joint.bodyB = hookcenter;
     joint.localAnchorA.Set(0, 2.186 / SCALE);
@@ -2383,21 +2385,23 @@ function choplifter(world) {
 
     //righthook && hookcenter
     joint = new b2RevoluteJointDef();
+    joint.lowerAngle = 0;
+    joint.upperAngle = 90;
     joint.bodyA = righthook;
     joint.bodyB = hookcenter;
     joint.localAnchorA.Set(0, 0);
   	joint.localAnchorB.Set(0, 0);
     world.CreateJoint(joint);
-	  
+
     //distance joint for chopper and hookcenter
-    newHookJoint = new b2DistanceJointDef();
-    newHookJoint.bodyB = chopperFaceRight;
-    newHookJoint.bodyA = hookcenter;
-  	newHookJoint.localAnchorA.Set(0, 0);
-    newHookJoint.localAnchorB.Set(0, 0);
-  	newHookJoint.length = 25 / SCALE;
-    newHookJoint.collideConnected = true;
-    newHookJoint.frequencyHz = 0;
-    newHookJoint.dampingRatio = 1;
-    hookDistanceJoint = world.CreateJoint(newHookJoint);
+    HookJoint = new b2DistanceJointDef();
+    HookJoint.bodyB = chopperFaceRight;
+    HookJoint.bodyA = hookcenter;
+  	HookJoint.localAnchorA.Set(0, 0);
+    HookJoint.localAnchorB.Set(0 / SCALE, 8.501 / SCALE);
+  	HookJoint.length = 25 / SCALE;
+    HookJoint.collideConnected = true;
+    HookJoint.frequencyHz = 0;
+    HookJoint.dampingRatio = 0.01;
+    hookDistanceJoint = world.CreateJoint(HookJoint);
 }

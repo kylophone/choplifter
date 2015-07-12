@@ -14,7 +14,7 @@ function box2d_init(){
   SCALE = 30;
   var gravity = new b2Vec2(0, 8);
   var objects_can_sleep = true;
-  var world = new b2World(gravity, objects_can_sleep);
+  world = new b2World(gravity, objects_can_sleep);
 
   choplifter(world);
 
@@ -74,8 +74,8 @@ function box2d_init(){
     return true;
   }
 
-  var activeChopper = chopperFaceRight;
-  var inactiveChopper = chopperFaceLeft;
+  activeChopper = chopperFaceRight;
+  inactiveChopper = chopperFaceLeft;
   var chopperForce = new b2Vec2(0, -1);
   var yVector = -2.1; 
 
@@ -116,7 +116,7 @@ function box2d_init(){
   //update
   function update() {
     update_choppers();
-    activeChopper.ApplyForce(update_chopper_forces(), activeChopper.GetWorldCenter());
+    //activeChopper.ApplyForce(update_chopper_forces(), activeChopper.GetWorldCenter());
     limit_chopper_angle();
 
     if(isMouseDown && (!mouseJoint)) {
@@ -173,16 +173,22 @@ function box2d_init(){
     inactiveChopper.SetLinearVelocity(activeChopper.GetLinearVelocity());
     inactiveChopper.SetAngularVelocity(activeChopper.GetAngularVelocity());
 
-    if (activeChopper.GetLinearVelocity().x > -0.5) {
+    if (activeChopper.GetLinearVelocity().x > 0.5) {
       activeChopper = chopperFaceRight;
       inactiveChopper = chopperFaceLeft;
       chopperFaceRight.SetActive(true);
       chopperFaceLeft.SetActive(false);
-    } else if (activeChopper.GetLinearVelocity().x < 0.5) {
+      HookJoint.bodyB = activeChopper;
+      world.DestroyJoint(hookDistanceJoint);
+      hookDistanceJoint = world.CreateJoint(HookJoint);
+    } else if (activeChopper.GetLinearVelocity().x < -0.5) {
       activeChopper = chopperFaceLeft;
       inactiveChopper = chopperFaceRight;
       chopperFaceLeft.SetActive(true);
       chopperFaceRight.SetActive(false);
+      HookJoint.bodyB = activeChopper;
+      world.DestroyJoint(hookDistanceJoint);
+      hookDistanceJoint = world.CreateJoint(HookJoint);
     }
   }
 
@@ -209,5 +215,4 @@ function box2d_init(){
 
     return updateForce;
   }
-
-}//;
+}
