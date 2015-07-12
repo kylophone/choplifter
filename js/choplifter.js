@@ -2375,8 +2375,6 @@ function choplifter(world) {
 
     //lefthook && hookcenter
     joint = new b2RevoluteJointDef();
-    joint.lowerAngle = 0;
-    joint.upperAngle = 90;
     joint.bodyA = lefthook;
     joint.bodyB = hookcenter;
     joint.localAnchorA.Set(0, 2.186 / SCALE);
@@ -2385,8 +2383,6 @@ function choplifter(world) {
 
     //righthook && hookcenter
     joint = new b2RevoluteJointDef();
-    joint.lowerAngle = 0;
-    joint.upperAngle = 90;
     joint.bodyA = righthook;
     joint.bodyB = hookcenter;
     joint.localAnchorA.Set(0, 0);
@@ -2397,9 +2393,9 @@ function choplifter(world) {
     HookJoint = new b2DistanceJointDef();
     HookJoint.bodyB = chopperFaceRight;
     HookJoint.bodyA = hookcenter;
-  	HookJoint.localAnchorA.Set(0, 0);
+    HookJoint.localAnchorA.Set(0, 0);
     HookJoint.localAnchorB.Set(0 / SCALE, 8.501 / SCALE);
-  	HookJoint.length = 25 / SCALE;
+    HookJoint.length = 25 / SCALE;
     HookJoint.collideConnected = true;
     HookJoint.frequencyHz = 0;
     HookJoint.dampingRatio = 0.01;
