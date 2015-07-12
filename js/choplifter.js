@@ -1,4 +1,5 @@
-//body & fixture setup. also joints.   
+//Initalization for all bodies, fixtures, and joints.
+
 function choplifter(world) {  
 	var b2BodyDef = Box2D.Dynamics.b2BodyDef;
 	var b2Body = Box2D.Dynamics.b2Body;
@@ -2120,13 +2121,14 @@ function choplifter(world) {
 	///END CHOPPER FACELEFT///
 
 
+  var hookDensity = 0.5;
 	//HOOKCENTER
 	//hookcenter (circle)
 	var bodyDefhookcenter = new b2BodyDef;
 	var fixDefhookcenter = new b2FixtureDef;
 	fixDefhookcenter.filter.categoryBits = 2;
 	fixDefhookcenter.filter.maskBits = 1;
-	fixDefhookcenter.density = 0;
+	fixDefhookcenter.density = hookDensity;
 	fixDefhookcenter.friction = 0;
 	fixDefhookcenter.restitution = 0;
 	bodyDefhookcenter.type = b2Body.b2_dynamicBody;
@@ -2134,10 +2136,9 @@ function choplifter(world) {
 	bodyDefhookcenter.position.Set(168.064 / SCALE, 295.065 / SCALE);
 	hookcenter = world.CreateBody(bodyDefhookcenter);
 	hookcenter.CreateFixture(fixDefhookcenter);
-    hookcenter.SetLinearDamping(0.01);
-    hookcenter.SetActive(true);
+  hookcenter.SetLinearDamping(1);
+  hookcenter.SetActive(true);
 	//END HOOKCENTER
-
 
 	//RIGHT HOOK STARTS HERE
 	//polygon4525 (polygon)
@@ -2145,7 +2146,7 @@ function choplifter(world) {
 	var fixDefpolygon4525 = new b2FixtureDef;
 	fixDefpolygon4525.filter.categoryBits = 2;
 	fixDefpolygon4525.filter.maskBits = 1;
-	fixDefpolygon4525.density = .05;
+	fixDefpolygon4525.density = hookDensity;
 	fixDefpolygon4525.friction = 5;
 	fixDefpolygon4525.restitution = 0.4;
 	bodyDefpolygon4525.type = b2Body.b2_dynamicBody;
@@ -2167,7 +2168,7 @@ function choplifter(world) {
 	var fixDefpolygon4527 = new b2FixtureDef;
 	fixDefpolygon4527.filter.categoryBits = 2;
 	fixDefpolygon4527.filter.maskBits = 1;
-	fixDefpolygon4527.density = .05;
+	fixDefpolygon4527.density = hookDensity;
 	fixDefpolygon4527.friction = 5;
 	fixDefpolygon4527.restitution = 0.4;
 	bodyDefpolygon4527.type = b2Body.b2_dynamicBody;
@@ -2193,7 +2194,7 @@ function choplifter(world) {
 	var fixDefpolygon4535 = new b2FixtureDef;
 	fixDefpolygon4535.filter.categoryBits = 2;
 	fixDefpolygon4535.filter.maskBits = 1;	
-	fixDefpolygon4535.density = .05;
+	fixDefpolygon4535.density = hookDensity;
 	fixDefpolygon4535.friction = 5;
 	fixDefpolygon4535.restitution = 0.4;
 	bodyDefpolygon4535.type = b2Body.b2_dynamicBody;
@@ -2215,7 +2216,7 @@ function choplifter(world) {
 	var fixDefpolygon4537 = new b2FixtureDef;
 	fixDefpolygon4537.filter.categoryBits = 2;
 	fixDefpolygon4537.filter.maskBits = 1;
-	fixDefpolygon4537.density = .05;
+	fixDefpolygon4537.density = hookDensity;
 	fixDefpolygon4537.friction = 5;
 	fixDefpolygon4537.restitution = 0.4;
 	bodyDefpolygon4537.type = b2Body.b2_dynamicBody;
