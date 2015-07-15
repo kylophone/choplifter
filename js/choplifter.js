@@ -1,4 +1,4 @@
-//Initialization for all bodies, fixtures, and joints.
+/* Initialization for all bodies, fixtures, and joints. */
 
 function choplifter(world, SCALE) {
   var b2BodyDef = Box2D.Dynamics.b2BodyDef;
