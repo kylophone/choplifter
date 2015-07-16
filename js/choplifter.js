@@ -2145,8 +2145,6 @@ function choplifter(world, SCALE) {
   //polygon4525 (polygon)
   var bodyDefpolygon4525 = new b2BodyDef;
   var fixDefpolygon4525 = new b2FixtureDef;
-  fixDefpolygon4525.filter.categoryBits = 2;
-  fixDefpolygon4525.filter.maskBits = 1;
   fixDefpolygon4525.density = hookDensity;
   fixDefpolygon4525.friction = 5;
   fixDefpolygon4525.restitution = 0.4;
@@ -2167,8 +2165,6 @@ function choplifter(world, SCALE) {
   //polygon4527 (polygon)
   var bodyDefpolygon4527 = new b2BodyDef;
   var fixDefpolygon4527 = new b2FixtureDef;
-  fixDefpolygon4527.filter.categoryBits = 2;
-  fixDefpolygon4527.filter.maskBits = 1;
   fixDefpolygon4527.density = hookDensity;
   fixDefpolygon4527.friction = 5;
   fixDefpolygon4527.restitution = 0.4;
@@ -2193,8 +2189,6 @@ function choplifter(world, SCALE) {
   //polygon4535 (polygon)
   var bodyDefpolygon4535 = new b2BodyDef;
   var fixDefpolygon4535 = new b2FixtureDef;
-  fixDefpolygon4535.filter.categoryBits = 2;
-  fixDefpolygon4535.filter.maskBits = 1;	
   fixDefpolygon4535.density = hookDensity;
   fixDefpolygon4535.friction = 5;
   fixDefpolygon4535.restitution = 0.4;
@@ -2215,8 +2209,6 @@ function choplifter(world, SCALE) {
   //polygon4537 (polygon)
   var bodyDefpolygon4537 = new b2BodyDef;
   var fixDefpolygon4537 = new b2FixtureDef;
-  fixDefpolygon4537.filter.categoryBits = 2;
-  fixDefpolygon4537.filter.maskBits = 1;
   fixDefpolygon4537.density = hookDensity;
   fixDefpolygon4537.friction = 5;
   fixDefpolygon4537.restitution = 0.4;
