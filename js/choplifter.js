@@ -2390,21 +2390,21 @@ function choplifter(world, SCALE) {
 
 
   //lefthook && hookcenter
-  joint = new b2RevoluteJointDef();
-  joint.bodyA = lefthook;
-  joint.bodyB = hookcenter;
-  joint.localAnchorA.Set(0, 2.186 / SCALE);
-  joint.localAnchorB.Set(0, 0);
-  world.CreateJoint(joint);
+  lefthook_joint = new b2RevoluteJointDef();
+  lefthook_joint.bodyA = lefthook;
+  lefthook_joint.bodyB = hookcenter;
+  lefthook_joint.localAnchorA.Set(0, 2.186 / SCALE);
+  lefthook_joint.localAnchorB.Set(0, 0);
+  world.CreateJoint(lefthook_joint);
 
 
   //righthook && hookcenter
-  joint = new b2RevoluteJointDef();
-  joint.bodyA = righthook;
-  joint.bodyB = hookcenter;
-  joint.localAnchorA.Set(0, 0);
-  joint.localAnchorB.Set(0, 0);
-  world.CreateJoint(joint);
+  righthook_joint = new b2RevoluteJointDef();
+  righthook_joint.bodyA = righthook;
+  righthook_joint.bodyB = hookcenter;
+  righthook_joint.localAnchorA.Set(0, 0);
+  righthook_joint.localAnchorB.Set(0, 0);
+  world.CreateJoint(righthook_joint);
 
 
   //distance joint for chopper and hookcenter
