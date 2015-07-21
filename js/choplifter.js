@@ -2390,7 +2390,7 @@ function choplifter(world, SCALE) {
 
 
   //lefthook && hookcenter
-  lefthook_joint = new b2RevoluteJointDef();
+  lefthook_joint = new b2WeldJointDef();
   lefthook_joint.bodyA = lefthook;
   lefthook_joint.bodyB = hookcenter;
   lefthook_joint.localAnchorA.Set(0, 2.186 / SCALE);
@@ -2399,7 +2399,7 @@ function choplifter(world, SCALE) {
 
 
   //righthook && hookcenter
-  righthook_joint = new b2RevoluteJointDef();
+  righthook_joint = new b2WeldJointDef();
   righthook_joint.bodyA = righthook;
   righthook_joint.bodyB = hookcenter;
   righthook_joint.localAnchorA.Set(0, 0);
