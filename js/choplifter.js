@@ -1893,7 +1893,7 @@ function choplifter(world, SCALE) {
 
   var chopperDensity = 2;
 
-  ///CHOPPER FACERIGHT///
+  /* BEGIN CHOPPER-FACERIGHT */
   //circle_17_ (circle)
   var bodyDefcircle_17_ = new b2BodyDef;
   var fixDefcircle_17_ = new b2FixtureDef;
@@ -2005,9 +2005,10 @@ function choplifter(world, SCALE) {
 
   chopperFaceRight.angularDamping = 3;
   chopperFaceRight.SetActive(true)
-    ///END CHOPPER FACERIGHT///
+    /* END CHOPPER-FACERIGHT */
 
-    ///CHOPPER FACELEFT///
+
+    /* BEGIN CHOPPER-FACELEFT */
     //circle_6_ (circle)
     var bodyDefcircle_6_ = new b2BodyDef;
   var fixDefcircle_6_ = new b2FixtureDef;
@@ -2119,12 +2120,12 @@ function choplifter(world, SCALE) {
 
   chopperFaceLeft.angularDamping = 3;
   chopperFaceLeft.SetActive(false);
-  ///END CHOPPER FACELEFT///
+  /* END CHOPPER-FACELEFT */
 
 
-  var hookDensity = 0.5;
-  //HOOKCENTER
+  /* BEGIN HOOKCENTER */
   //hookcenter (circle)
+  var hookDensity = 0.5;
   var bodyDefhookcenter = new b2BodyDef;
   var fixDefhookcenter = new b2FixtureDef;
   fixDefhookcenter.filter.categoryBits = 2;
@@ -2139,9 +2140,10 @@ function choplifter(world, SCALE) {
   hookcenter.CreateFixture(fixDefhookcenter);
   hookcenter.SetLinearDamping(1);
   hookcenter.SetActive(true);
-  //END HOOKCENTER
+  /* END HOOKCENTER */
 
-  //RIGHT HOOK STARTS HERE
+
+  /* BEGIN RIGHTHOOK */
   //polygon4525 (polygon)
   var bodyDefpolygon4525 = new b2BodyDef;
   var fixDefpolygon4525 = new b2FixtureDef;
@@ -2183,9 +2185,10 @@ function choplifter(world, SCALE) {
   var polygon4527 = world.CreateBody(bodyDefpolygon4527);
   righthook.CreateFixture(fixDefpolygon4527);
   righthook.SetActive(true);
-  //RIGHTHOOK ENDS HERE
+  /* END RIGHTHOOK */
 
-  //LEFTHOOK STARTS HERE
+
+  /* BEGIN LEFTHOOK */
   //polygon4535 (polygon)
   var bodyDefpolygon4535 = new b2BodyDef;
   var fixDefpolygon4535 = new b2FixtureDef;
@@ -2227,10 +2230,10 @@ function choplifter(world, SCALE) {
   var polygon4537 = world.CreateBody(bodyDefpolygon4537)
     lefthook.CreateFixture(fixDefpolygon4537);
   lefthook.SetActive(true);
-  //LEFTHOOK ENDS HERE
+  /* END LEFTHOOK */
 
 
-  //ALL JOINTS BELOW
+  /* BEGIN JOINTS */
   var joint;
 
   //boyhead && polygon4600 (boy)
@@ -2418,4 +2421,5 @@ function choplifter(world, SCALE) {
   hookJointDef.frequencyHz = 0;
   hookJointDef.dampingRatio = 0.01;
   rope = world.CreateJoint(hookJointDef);
+  /* END JOINTS */
 }
