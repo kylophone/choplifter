@@ -73,26 +73,25 @@ function box2d_init(){
   }
 
 
-  //detect keypress 	
-  var chopperForce = new b2Vec2(0, -1);
+  /* DETECT KEYPRESS */
   document.addEventListener("keydown", function(e){
     switch(e.keyCode) {
       case 74: //j
-        yVector -= 0.03;
+        yVector -= 0.05;
         break;
       case 70: //f
         if (chopperForce.y < 0) {
-          yVector += 0.02;
+          yVector += 0.05;
         }
         break; 
       case 75: //k
-        if (activeChopper.GetAngle() < ((2 * Math.PI) * (15 / 360))) {
-          activeChopper.ApplyTorque(0.6);
+        if (activeChopper.GetAngle() < ((2 * Math.PI) * (20 / 360))) {
+          activeChopper.ApplyTorque(0.8);
         }
         break;
       case 68: //d
-        if (activeChopper.GetAngle() > (-1 * (2 * Math.PI) * (15 / 360))) {
-          activeChopper.ApplyTorque(-0.6);
+        if (activeChopper.GetAngle() > (-1 * (2 * Math.PI) * (20 / 360))) {
+          activeChopper.ApplyTorque(-0.8);
         }
         break;
       case 76: //l
@@ -113,7 +112,7 @@ function box2d_init(){
   }, true);
 
 
-  //update
+  /* MAIN LOOP */
   function update() {
     activeChopper.ApplyForce(update_chopper_forces(), activeChopper.GetWorldCenter());
     update_choppers();
@@ -201,30 +200,21 @@ function box2d_init(){
 
 
   function limit_chopper_angle() {
-    if (activeChopper.GetAngle() > ((2 * Math.PI) * (20 / 360))) {
-      activeChopper.SetAngle((2 * Math.PI) * (20 / 360))
+    if (activeChopper.GetAngle() > ((2 * Math.PI) * (25 / 360))) {
+      activeChopper.SetAngle((2 * Math.PI) * (25 / 360))
       activeChopper.SetAngularVelocity(0);
-    } else if (activeChopper.GetAngle() < (-1 * (2 * Math.PI) * (20 / 360))) {
-      activeChopper.SetAngle(-1 * (2 * Math.PI) * (20 / 360))
+    } else if (activeChopper.GetAngle() < (-1 * (2 * Math.PI) * (25 / 360))) {
+      activeChopper.SetAngle(-1 * (2 * Math.PI) * (25 / 360))
       activeChopper.SetAngularVelocity(0);
     }
   }
 
 
-  var yVector = -9.3;
+  var yVector = 0;
+  var chopperForce = new b2Vec2(0, 1.02 * -(activeChopper.GetMass() * gravity.y));
   function update_chopper_forces() {
     var updateForce = activeChopper.GetWorldVector(chopperForce);
     updateForce.y += yVector;
-
-    /*
-       if (updateForce.y < -3.3) {
-       yVector += 0.03;
-       updateForce.y = -3.3;
-       } else if (updateForce.y > -3) {
-       updateForce.y = -3;
-       }
-       */
-
     return updateForce;
   }
 }

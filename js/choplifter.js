@@ -2125,7 +2125,7 @@ function choplifter(world, SCALE) {
 
   /* BEGIN HOOKCENTER */
   //hookcenter (circle)
-  var hookDensity = 0.5;
+  var hookDensity = 0.025;
   var bodyDefhookcenter = new b2BodyDef;
   var fixDefhookcenter = new b2FixtureDef;
   fixDefhookcenter.filter.categoryBits = 2;
@@ -2159,7 +2159,7 @@ function choplifter(world, SCALE) {
       new b2Vec2(14.435 / SCALE, 2.58 / SCALE),
   ], 3);
   var righthook = world.CreateBody(bodyDefpolygon4525)
-    righthook.CreateFixture(fixDefpolygon4525);
+  righthook.CreateFixture(fixDefpolygon4525);
   var polygon4525_x = bodyDefpolygon4525.position.x * SCALE;
   var polygon4525_y = bodyDefpolygon4525.position.y * SCALE;
 
@@ -2204,7 +2204,7 @@ function choplifter(world, SCALE) {
       new b2Vec2(-13.988 / SCALE, 4.715 / SCALE),
   ], 3);
   var lefthook = world.CreateBody(bodyDefpolygon4535)
-    lefthook.CreateFixture(fixDefpolygon4535);
+  lefthook.CreateFixture(fixDefpolygon4535);
   var polygon4535_x = bodyDefpolygon4535.position.x * SCALE;
   var polygon4535_y = bodyDefpolygon4535.position.y * SCALE;
 
@@ -2228,7 +2228,7 @@ function choplifter(world, SCALE) {
       new b2Vec2((-1.939 - x_offset) / SCALE, (0.346 - y_offset) / SCALE),
   ], 3);
   var polygon4537 = world.CreateBody(bodyDefpolygon4537)
-    lefthook.CreateFixture(fixDefpolygon4537);
+  lefthook.CreateFixture(fixDefpolygon4537);
   lefthook.SetActive(true);
   /* END LEFTHOOK */
 
@@ -2416,7 +2416,7 @@ function choplifter(world, SCALE) {
   hookJointDef.bodyA = hookcenter;
   hookJointDef.localAnchorA.Set(0, 0);
   hookJointDef.localAnchorB.Set(0 / SCALE, 8.501 / SCALE);
-  hookJointDef.length = 25 / SCALE;
+  hookJointDef.length = 20 / SCALE;
   hookJointDef.collideConnected = true;
   hookJointDef.frequencyHz = 0;
   hookJointDef.dampingRatio = 0.01;
