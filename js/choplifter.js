@@ -398,7 +398,7 @@ function choplifter(world, SCALE) {
   bodyDefwheel.type = b2Body.b2_dynamicBody;
   fixDefwheel.shape = new b2CircleShape(3.121 / SCALE);
   bodyDefwheel.position.Set(1063.628 / SCALE, 402.527 / SCALE);
-  var wheel = world.CreateBody(bodyDefwheel):
+  var wheel = world.CreateBody(bodyDefwheel);
   wheel.CreateFixture(fixDefwheel);
 
 
@@ -2234,93 +2234,95 @@ function choplifter(world, SCALE) {
 
 
   /* BEGIN JOINTS */
+  var joint;
+
 
   //boyhead && polygon4600 (boy)
-  var joint = new b2WeldJointDef();   
+  joint = new b2WeldJointDef();
   joint.Initialize(polygon4600, boyhead, polygon4600.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //rect4719 && polygon4721 (starttower)
-  var joint = new b2WeldJointDef();   
+  joint = new b2WeldJointDef();
   joint.Initialize(rect4719, polygon4721, polygon4721.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //polygon5040 && polygon5042 (swingbase)
-  var joint = new b2WeldJointDef();   
+  joint = new b2WeldJointDef(); 
   joint.Initialize(polygon5040, polygon5042, polygon5040.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //polygon5048 && polygon5042 (swinghinge)
-  var joint = new b2RevoluteJointDef();   
+  joint = new b2RevoluteJointDef();   
   joint.Initialize(polygon5048, polygon5042, polygon5048.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //circle_20_ && polyline4931 (weight)
-  var joint = new b2WeldJointDef();   
+  joint = new b2WeldJointDef();   
   joint.Initialize(circle_20_, polyline4931, polyline4931.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //circle_21_ && polyline4945 (weight_1_)
-  var joint = new b2WeldJointDef();   
+  joint = new b2WeldJointDef();   
   joint.Initialize(circle_21_, polyline4945, polyline4945.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //circle_12_ && polyline4959 (weight_2_)
-  var joint = new b2WeldJointDef();   
+  joint = new b2WeldJointDef();   
   joint.Initialize(circle_12_, polyline4959, polyline4959.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //circle_13_ && polyline4973 (weight_3_)
-  var joint = new b2WeldJointDef();   
+  joint = new b2WeldJointDef();
   joint.Initialize(circle_13_, polyline4973, polyline4973.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //circle_14_ && polyline4987 (weight_4_)
-  var joint = new b2WeldJointDef();   
+  joint = new b2WeldJointDef();
   joint.Initialize(circle_14_, polyline4987, polyline4987.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //wheel && polygon4899 (bicycle and tiny wheel)
-  var joint = new b2RevoluteJointDef();   
+  joint = new b2RevoluteJointDef();
   joint.Initialize(wheel, polygon4899, wheel.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //circle_16_ && polygon4899 (bicycle and big wheel)
-  var joint = new b2RevoluteJointDef();   
+  joint = new b2RevoluteJointDef();
   joint.Initialize(circle_16_, polygon4899, circle_16_.GetWorldCenter());
   world.CreateJoint(joint);  
 
 
   //rect4915 && polygon4917 (carbody and cabin)
-  var joint = new b2WeldJointDef();   
+  joint = new b2WeldJointDef();
   joint.Initialize(rect4915, polygon4917, polygon4917.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //wheel_3_ && rect4915 (carbody and wheel1)
-  var joint = new b2RevoluteJointDef();   
+  joint = new b2RevoluteJointDef(); 
   joint.Initialize(wheel_3_, rect4915, wheel_3_.GetWorldCenter());
   world.CreateJoint(joint);  
 
 
   //wheel_4_ && rect4915 (carbody and wheel2)
-  var joint = new b2RevoluteJointDef();   
+  joint = new b2RevoluteJointDef(); 
   joint.Initialize(wheel_4_, rect4915, wheel_4_.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //circle_8_ && polygon4665 (bigwheel and crank)
-  var joint = new b2RevoluteJointDef();   
+  joint = new b2RevoluteJointDef(); 
   joint.Initialize(circle_8_, polygon4665, circle_8_.GetWorldCenter());
   joint.motorSpeed = Math.PI / 2;
   joint.maxMotorTorque = 10;
@@ -2329,37 +2331,37 @@ function choplifter(world, SCALE) {
 
 
   //circle_9_ && polygon4665 (tinywheel and crank)
-  var joint = new b2WeldJointDef();   
+  joint = new b2WeldJointDef(); 
   joint.Initialize(circle_9_, polygon4665, circle_9_.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //rect4871 && polygon4873 (stroller)
-  var joint = new b2WeldJointDef();   
+  joint = new b2WeldJointDef(); 
   joint.Initialize(rect4871, polygon4873, polygon4873.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //circle_19_ && rect4871 (stroller)
-  var joint = new b2WeldJointDef();   
+  joint = new b2WeldJointDef(); 
   joint.Initialize(rect4871, circle_19_, circle_19_.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //wheel_1_ && rect4871 (stroller)
-  var joint = new b2RevoluteJointDef();   
+  joint = new b2RevoluteJointDef(); 
   joint.Initialize(wheel_1_, rect4871, wheel_1_.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //wheel_2_ && rect4871 (stroller)
-  var joint = new b2RevoluteJointDef();   
+  joint = new b2RevoluteJointDef(); 
   joint.Initialize(wheel_2_, rect4871, wheel_2_.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //physics_35_ && physics_69_ (righthatch)
-  var joint = new b2RevoluteJointDef();
+  joint = new b2RevoluteJointDef();
   joint.bodyA = physics_35_;
   joint.bodyB = physics_69_;
   joint.localAnchorA.Set(-22.8955 / SCALE, -35.0 / SCALE);
@@ -2370,7 +2372,7 @@ function choplifter(world, SCALE) {
 
 
   //physics_39_ && physics_70_ (lefthatch)
-  var joint = new b2RevoluteJointDef();
+  joint = new b2RevoluteJointDef();
   joint.bodyA = physics_39_;
   joint.bodyB = physics_70_;
   joint.localAnchorA.Set(47.0 / SCALE, -22.0 / SCALE);
@@ -2381,7 +2383,7 @@ function choplifter(world, SCALE) {
 
 
   //physics_57_ && hatch2 (hatch2)
-  var joint = new b2RevoluteJointDef();
+  joint = new b2RevoluteJointDef();
   joint.bodyA = physics_57_;
   joint.bodyB = hatch2;
   joint.localAnchorA.Set(0, 0);
