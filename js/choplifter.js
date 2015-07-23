@@ -50,7 +50,7 @@ function choplifter(world, SCALE) {
   fixDefphysics_35_.shape.SetAsBox(22.8955 / SCALE, 35.0 / SCALE);
   bodyDefphysics_35_.position.Set(1237.6035 / SCALE, 441.928 / SCALE);
   var physics_35_ = world.CreateBody(bodyDefphysics_35_)
-    physics_35_.CreateFixture(fixDefphysics_35_);
+  physics_35_.CreateFixture(fixDefphysics_35_);
 
 
   //physics_38_ (rect)
@@ -77,7 +77,7 @@ function choplifter(world, SCALE) {
   fixDefphysics_39_.shape.SetAsBox(47.0 / SCALE, 22.0 / SCALE);
   bodyDefphysics_39_.position.Set(1062.708 / SCALE, 428.928 / SCALE);
   var physics_39_ = world.CreateBody(bodyDefphysics_39_)
-    physics_39_.CreateFixture(fixDefphysics_39_);
+  physics_39_.CreateFixture(fixDefphysics_39_);
 
 
   //physics_67_ (rect)
@@ -155,8 +155,8 @@ function choplifter(world, SCALE) {
   fixDefrect4719.shape = new b2PolygonShape;
   fixDefrect4719.shape.SetAsBox(34.292 / SCALE, 8.967 / SCALE);
   bodyDefrect4719.position.Set(172.296 / SCALE, 317.961 / SCALE);
-  var rect4719 = world.CreateBody(bodyDefrect4719)
-    rect4719.CreateFixture(fixDefrect4719);
+  var rect4719 = world.CreateBody(bodyDefrect4719);
+  rect4719.CreateFixture(fixDefrect4719);
 
 
   //rect4852 (rect)
@@ -208,8 +208,8 @@ function choplifter(world, SCALE) {
   fixDefrect4871.shape = new b2PolygonShape;
   fixDefrect4871.shape.SetAsBox(11.959 / SCALE, 3.566 / SCALE);
   bodyDefrect4871.position.Set(861.794 / SCALE, 339.516 / SCALE);
-  var rect4871 = world.CreateBody(bodyDefrect4871)
-    rect4871.CreateFixture(fixDefrect4871);
+  var rect4871 = world.CreateBody(bodyDefrect4871);
+  rect4871.CreateFixture(fixDefrect4871);
 
 
   //rect4915 (rect)
@@ -222,8 +222,8 @@ function choplifter(world, SCALE) {
   fixDefrect4915.shape = new b2PolygonShape;
   fixDefrect4915.shape.SetAsBox(12.1495 / SCALE, 3.566 / SCALE);
   bodyDefrect4915.position.Set(715.5745 / SCALE, 337.96 / SCALE);
-  var rect4915 = world.CreateBody(bodyDefrect4915)
-    rect4915.CreateFixture(fixDefrect4915);
+  var rect4915 = world.CreateBody(bodyDefrect4915);
+  rect4915.CreateFixture(fixDefrect4915);
 
 
   //boyhead (circle)
@@ -320,8 +320,8 @@ function choplifter(world, SCALE) {
   bodyDefcircle_9_.type = b2Body.b2_dynamicBody;
   fixDefcircle_9_.shape = new b2CircleShape(3.569 / SCALE);
   bodyDefcircle_9_.position.Set(1218.216 / SCALE, 542.658 / SCALE);
-  var circle_9_ = world.CreateBody(bodyDefcircle_9_)
-    circle_9_.CreateFixture(fixDefcircle_9_);
+  var circle_9_ = world.CreateBody(bodyDefcircle_9_);
+  circle_9_.CreateFixture(fixDefcircle_9_);
 
 
   //circle_8_ (circle)
@@ -333,8 +333,8 @@ function choplifter(world, SCALE) {
   bodyDefcircle_8_.type = b2Body.b2_staticBody;
   fixDefcircle_8_.shape = new b2CircleShape(5.216 / SCALE);
   bodyDefcircle_8_.position.Set(1218.216 / SCALE, 529.771 / SCALE);
-  var circle_8_ = world.CreateBody(bodyDefcircle_8_)
-    circle_8_.CreateFixture(fixDefcircle_8_);
+  var circle_8_ = world.CreateBody(bodyDefcircle_8_);
+  circle_8_.CreateFixture(fixDefcircle_8_);
 
 
   //wheel_2_ (circle)
@@ -346,8 +346,8 @@ function choplifter(world, SCALE) {
   bodyDefwheel_2_.type = b2Body.b2_dynamicBody;
   fixDefwheel_2_.shape = new b2CircleShape(3.273 / SCALE);
   bodyDefwheel_2_.position.Set(855.16 / SCALE, 345.496 / SCALE);
-  var wheel_2_ = world.CreateBody(bodyDefwheel_2_)
-    wheel_2_.CreateFixture(fixDefwheel_2_);
+  var wheel_2_ = world.CreateBody(bodyDefwheel_2_);
+  wheel_2_.CreateFixture(fixDefwheel_2_);
 
 
   //wheel_1_ (circle)
@@ -359,8 +359,8 @@ function choplifter(world, SCALE) {
   bodyDefwheel_1_.type = b2Body.b2_dynamicBody;
   fixDefwheel_1_.shape = new b2CircleShape(3.273 / SCALE);
   bodyDefwheel_1_.position.Set(868.812 / SCALE, 345.496 / SCALE);
-  var wheel_1_ = world.CreateBody(bodyDefwheel_1_)
-    wheel_1_.CreateFixture(fixDefwheel_1_);
+  var wheel_1_ = world.CreateBody(bodyDefwheel_1_);
+  wheel_1_.CreateFixture(fixDefwheel_1_);
 
 
   //circle_19_ (circle)
@@ -372,8 +372,8 @@ function choplifter(world, SCALE) {
   bodyDefcircle_19_.type = b2Body.b2_dynamicBody;
   fixDefcircle_19_.shape = new b2CircleShape(3.014 / SCALE);
   bodyDefcircle_19_.position.Set(854.515 / SCALE, 331.833 / SCALE);
-  var circle_19_ = world.CreateBody(bodyDefcircle_19_)
-    circle_19_.CreateFixture(fixDefcircle_19_);
+  var circle_19_ = world.CreateBody(bodyDefcircle_19_);i
+  circle_19_.CreateFixture(fixDefcircle_19_);
 
 
   //circle_16_ (circle)
@@ -385,8 +385,8 @@ function choplifter(world, SCALE) {
   bodyDefcircle_16_.type = b2Body.b2_dynamicBody;
   fixDefcircle_16_.shape = new b2CircleShape(11.707 / SCALE);
   bodyDefcircle_16_.position.Set(1080.533 / SCALE, 393.939 / SCALE);
-  var circle_16_ = world.CreateBody(bodyDefcircle_16_)
-    circle_16_.CreateFixture(fixDefcircle_16_);
+  var circle_16_ = world.CreateBody(bodyDefcircle_16_);
+  circle_16_.CreateFixture(fixDefcircle_16_);
 
 
   //wheel (circle)
@@ -398,8 +398,8 @@ function choplifter(world, SCALE) {
   bodyDefwheel.type = b2Body.b2_dynamicBody;
   fixDefwheel.shape = new b2CircleShape(3.121 / SCALE);
   bodyDefwheel.position.Set(1063.628 / SCALE, 402.527 / SCALE);
-  var wheel = world.CreateBody(bodyDefwheel)
-    wheel.CreateFixture(fixDefwheel);
+  var wheel = world.CreateBody(bodyDefwheel):
+  wheel.CreateFixture(fixDefwheel);
 
 
   //wheel_4_ (circle)
@@ -411,8 +411,8 @@ function choplifter(world, SCALE) {
   bodyDefwheel_4_.type = b2Body.b2_dynamicBody;
   fixDefwheel_4_.shape = new b2CircleShape(3.078 / SCALE);
   bodyDefwheel_4_.position.Set(708.683 / SCALE, 344.744 / SCALE);
-  var wheel_4_ = world.CreateBody(bodyDefwheel_4_)
-    wheel_4_.CreateFixture(fixDefwheel_4_);
+  var wheel_4_ = world.CreateBody(bodyDefwheel_4_);
+  wheel_4_.CreateFixture(fixDefwheel_4_);
 
 
   //wheel_3_ (circle)
@@ -424,8 +424,8 @@ function choplifter(world, SCALE) {
   bodyDefwheel_3_.type = b2Body.b2_dynamicBody;
   fixDefwheel_3_.shape = new b2CircleShape(3.078 / SCALE);
   bodyDefwheel_3_.position.Set(722.332 / SCALE, 344.744 / SCALE);
-  var wheel_3_ = world.CreateBody(bodyDefwheel_3_)
-    wheel_3_.CreateFixture(fixDefwheel_3_);
+  var wheel_3_ = world.CreateBody(bodyDefwheel_3_);
+  wheel_3_.CreateFixture(fixDefwheel_3_);
 
 
   //circle_20_ (circle)
@@ -437,8 +437,8 @@ function choplifter(world, SCALE) {
   bodyDefcircle_20_.type = b2Body.b2_dynamicBody;
   fixDefcircle_20_.shape = new b2CircleShape(3.369 / SCALE);
   bodyDefcircle_20_.position.Set(1101.259 / SCALE, 386.013 / SCALE);
-  var circle_20_ = world.CreateBody(bodyDefcircle_20_)
-    circle_20_.CreateFixture(fixDefcircle_20_);
+  var circle_20_ = world.CreateBody(bodyDefcircle_20_);
+  circle_20_.CreateFixture(fixDefcircle_20_);
 
 
   //circle_21_ (circle)
@@ -450,8 +450,8 @@ function choplifter(world, SCALE) {
   bodyDefcircle_21_.type = b2Body.b2_dynamicBody;
   fixDefcircle_21_.shape = new b2CircleShape(3.369 / SCALE);
   bodyDefcircle_21_.position.Set(642.822 / SCALE, 654.895 / SCALE);
-  var circle_21_ = world.CreateBody(bodyDefcircle_21_)
-    circle_21_.CreateFixture(fixDefcircle_21_);
+  var circle_21_ = world.CreateBody(bodyDefcircle_21_);
+  circle_21_.CreateFixture(fixDefcircle_21_);
 
 
   //circle_12_ (circle)
@@ -463,8 +463,8 @@ function choplifter(world, SCALE) {
   bodyDefcircle_12_.type = b2Body.b2_dynamicBody;
   fixDefcircle_12_.shape = new b2CircleShape(3.369 / SCALE);
   bodyDefcircle_12_.position.Set(1164.265 / SCALE, 608.222 / SCALE);
-  var circle_12_ = world.CreateBody(bodyDefcircle_12_)
-    circle_12_.CreateFixture(fixDefcircle_12_);
+  var circle_12_ = world.CreateBody(bodyDefcircle_12_);
+  circle_12_.CreateFixture(fixDefcircle_12_);
 
 
   //circle_13_ (circle)
@@ -476,8 +476,8 @@ function choplifter(world, SCALE) {
   bodyDefcircle_13_.type = b2Body.b2_dynamicBody;
   fixDefcircle_13_.shape = new b2CircleShape(3.369 / SCALE);
   bodyDefcircle_13_.position.Set(693.699 / SCALE, 329.256 / SCALE);
-  var circle_13_ = world.CreateBody(bodyDefcircle_13_)
-    circle_13_.CreateFixture(fixDefcircle_13_);
+  var circle_13_ = world.CreateBody(bodyDefcircle_13_);
+  circle_13_.CreateFixture(fixDefcircle_13_);
 
 
   //circle_14_ (circle)
@@ -489,8 +489,8 @@ function choplifter(world, SCALE) {
   bodyDefcircle_14_.type = b2Body.b2_dynamicBody;
   fixDefcircle_14_.shape = new b2CircleShape(3.369 / SCALE);
   bodyDefcircle_14_.position.Set(839.575 / SCALE, 329.295 / SCALE);
-  var circle_14_ = world.CreateBody(bodyDefcircle_14_)
-    circle_14_.CreateFixture(fixDefcircle_14_);
+  var circle_14_ = world.CreateBody(bodyDefcircle_14_);
+  circle_14_.CreateFixture(fixDefcircle_14_);
 
 
   //physics_53_ (polygon)
@@ -1316,8 +1316,8 @@ function choplifter(world, SCALE) {
       new b2Vec2(-72.75 / SCALE, -41.0 / SCALE),
       new b2Vec2(0.0 / SCALE, -109.0 / SCALE),
   ], 4);
-  var physics_57_ = world.CreateBody(bodyDefphysics_57_)
-    physics_57_.CreateFixture(fixDefphysics_57_);
+  var physics_57_ = world.CreateBody(bodyDefphysics_57_);
+  physics_57_.CreateFixture(fixDefphysics_57_);
 
 
   //physics_56_ (polygon)
@@ -1402,8 +1402,8 @@ function choplifter(world, SCALE) {
       new b2Vec2(45.897 / SCALE, 0.0 / SCALE),
       new b2Vec2(1.897 / SCALE, 1.896 / SCALE),
   ], 3);
-  var hatch2 = world.CreateBody(bodyDefphysics_75_)
-    hatch2.CreateFixture(fixDefphysics_75_);
+  var hatch2 = world.CreateBody(bodyDefphysics_75_);
+  hatch2.CreateFixture(fixDefphysics_75_);
 
 
   //polygon4557 (polygon)
@@ -1458,8 +1458,8 @@ function choplifter(world, SCALE) {
       new b2Vec2(3.805 / SCALE, -11.652 / SCALE),
       new b2Vec2(6.25 / SCALE, 0.0 / SCALE),
   ], 3);
-  var polygon4600 = world.CreateBody(bodyDefpolygon4600)
-    polygon4600.CreateFixture(fixDefpolygon4600);
+  var polygon4600 = world.CreateBody(bodyDefpolygon4600);
+  polygon4600.CreateFixture(fixDefpolygon4600);
 
 
   //polygon4665 (polygon)
@@ -1477,8 +1477,8 @@ function choplifter(world, SCALE) {
       new b2Vec2(8.784 / SCALE, -12.886 / SCALE),
       new b2Vec2(7.142 / SCALE, 0.0 / SCALE),
   ], 4);
-  var polygon4665 = world.CreateBody(bodyDefpolygon4665)
-    polygon4665.CreateFixture(fixDefpolygon4665);
+  var polygon4665 = world.CreateBody(bodyDefpolygon4665);
+  polygon4665.CreateFixture(fixDefpolygon4665);
 
 
   //physics_69_ (polygon)
@@ -1495,8 +1495,8 @@ function choplifter(world, SCALE) {
       new b2Vec2(-0.00500000000011 / SCALE, 45.894 / SCALE),
       new b2Vec2(-1.897 / SCALE, 44.0 / SCALE),
   ], 3);
-  var physics_69_ = world.CreateBody(bodyDefphysics_69_)
-    physics_69_.CreateFixture(fixDefphysics_69_);
+  var physics_69_ = world.CreateBody(bodyDefphysics_69_);
+  physics_69_.CreateFixture(fixDefphysics_69_);
 
 
   //physics_70_ (polygon)
@@ -1513,8 +1513,8 @@ function choplifter(world, SCALE) {
       new b2Vec2(1.894 / SCALE, 44.0 / SCALE),
       new b2Vec2(0.00400000000013 / SCALE, 45.899 / SCALE),
   ], 3);
-  var physics_70_ = world.CreateBody(bodyDefphysics_70_)
-    physics_70_.CreateFixture(fixDefphysics_70_);
+  var physics_70_ = world.CreateBody(bodyDefphysics_70_);
+  physics_70_.CreateFixture(fixDefphysics_70_);
 
 
   //polygon4721 (polygon)
@@ -1532,8 +1532,8 @@ function choplifter(world, SCALE) {
       new b2Vec2(38.474 / SCALE, -79.356 / SCALE),
       new b2Vec2(52.44 / SCALE, 0.0 / SCALE),
   ], 4);
-  var polygon4721 = world.CreateBody(bodyDefpolygon4721)
-    polygon4721.CreateFixture(fixDefpolygon4721);
+  var polygon4721 = world.CreateBody(bodyDefpolygon4721);
+  polygon4721.CreateFixture(fixDefpolygon4721);
 
 
   //polygon4873 (polygon)
@@ -1551,8 +1551,8 @@ function choplifter(world, SCALE) {
       new b2Vec2(9.119 / SCALE, 6.509 / SCALE),
       new b2Vec2(-2.125 / SCALE, 6.509 / SCALE),
   ], 4);
-  var polygon4873 = world.CreateBody(bodyDefpolygon4873)
-    polygon4873.CreateFixture(fixDefpolygon4873);
+  var polygon4873 = world.CreateBody(bodyDefpolygon4873);
+  polygon4873.CreateFixture(fixDefpolygon4873);
 
 
   //polygon4899 (polygon)
@@ -1570,8 +1570,8 @@ function choplifter(world, SCALE) {
       new b2Vec2(16.905 / SCALE, -28.817 / SCALE),
       new b2Vec2(16.905 / SCALE, -8.588 / SCALE),
   ], 4);
-  var polygon4899 = world.CreateBody(bodyDefpolygon4899)
-    polygon4899.CreateFixture(fixDefpolygon4899);
+  var polygon4899 = world.CreateBody(bodyDefpolygon4899);
+  polygon4899.CreateFixture(fixDefpolygon4899);
 
 
   //polygon4917 (polygon)
@@ -1589,8 +1589,8 @@ function choplifter(world, SCALE) {
       new b2Vec2(11.051 / SCALE, 8.768 / SCALE),
       new b2Vec2(-3.766 / SCALE, 8.768 / SCALE),
   ], 4);
-  var polygon4917 = world.CreateBody(bodyDefpolygon4917)
-    polygon4917.CreateFixture(fixDefpolygon4917);
+  var polygon4917 = world.CreateBody(bodyDefpolygon4917);
+  polygon4917.CreateFixture(fixDefpolygon4917);
 
 
   //polyline4931 (polygon)
@@ -1609,8 +1609,8 @@ function choplifter(world, SCALE) {
       new b2Vec2(-2.729 / SCALE, 11.238 / SCALE),
       new b2Vec2(-0.086 / SCALE, 0.351 / SCALE),
   ], 5);
-  var polyline4931 = world.CreateBody(bodyDefpolyline4931)
-    polyline4931.CreateFixture(fixDefpolyline4931);
+  var polyline4931 = world.CreateBody(bodyDefpolyline4931);
+  polyline4931.CreateFixture(fixDefpolyline4931);
 
 
   //polyline4945 (polygon)
@@ -1629,8 +1629,8 @@ function choplifter(world, SCALE) {
       new b2Vec2(-2.726 / SCALE, 11.239 / SCALE),
       new b2Vec2(-0.086 / SCALE, 0.352 / SCALE),
   ], 5);
-  var polyline4945 = world.CreateBody(bodyDefpolyline4945)
-    polyline4945.CreateFixture(fixDefpolyline4945);
+  var polyline4945 = world.CreateBody(bodyDefpolyline4945);
+  polyline4945.CreateFixture(fixDefpolyline4945);
 
 
   //polyline4959 (polygon)
@@ -1649,8 +1649,8 @@ function choplifter(world, SCALE) {
       new b2Vec2(-2.727 / SCALE, 11.239 / SCALE),
       new b2Vec2(-0.086 / SCALE, 0.352 / SCALE),
   ], 5);
-  var polyline4959 = world.CreateBody(bodyDefpolyline4959)
-    polyline4959.CreateFixture(fixDefpolyline4959);
+  var polyline4959 = world.CreateBody(bodyDefpolyline4959);
+  polyline4959.CreateFixture(fixDefpolyline4959);
 
 
   //polyline4973 (polygon)
@@ -1669,8 +1669,8 @@ function choplifter(world, SCALE) {
       new b2Vec2(-2.726 / SCALE, 11.237 / SCALE),
       new b2Vec2(-0.0859999999999 / SCALE, 0.35 / SCALE),
   ], 5);
-  var polyline4973 = world.CreateBody(bodyDefpolyline4973)
-    polyline4973.CreateFixture(fixDefpolyline4973);
+  var polyline4973 = world.CreateBody(bodyDefpolyline4973);
+  polyline4973.CreateFixture(fixDefpolyline4973);
 
 
   //polyline4987 (polygon)
@@ -1689,8 +1689,8 @@ function choplifter(world, SCALE) {
       new b2Vec2(-2.728 / SCALE, 11.237 / SCALE),
       new b2Vec2(-0.086 / SCALE, 0.351 / SCALE),
   ], 5);
-  var polyline4987 = world.CreateBody(bodyDefpolyline4987)
-    polyline4987.CreateFixture(fixDefpolyline4987);
+  var polyline4987 = world.CreateBody(bodyDefpolyline4987);
+  polyline4987.CreateFixture(fixDefpolyline4987);
 
 
   //polygon4994 (polygon)
@@ -1852,8 +1852,8 @@ function choplifter(world, SCALE) {
       new b2Vec2(4.5 / SCALE, 6.197 / SCALE),
       new b2Vec2(-0.604 / SCALE, 0.842 / SCALE),
   ], 4);
-  var polygon5040 = world.CreateBody(bodyDefpolygon5040)
-    polygon5040.CreateFixture(fixDefpolygon5040);
+  var polygon5040 = world.CreateBody(bodyDefpolygon5040);
+  polygon5040.CreateFixture(fixDefpolygon5040);
 
 
   //polygon5042 (polygon)
@@ -1870,8 +1870,8 @@ function choplifter(world, SCALE) {
       new b2Vec2(50.567 / SCALE, -30.824 / SCALE),
       new b2Vec2(25.957 / SCALE, -12.033 / SCALE),
   ], 3);
-  var polygon5042 = world.CreateBody(bodyDefpolygon5042)
-    polygon5042.CreateFixture(fixDefpolygon5042);
+  var polygon5042 = world.CreateBody(bodyDefpolygon5042);
+  polygon5042.CreateFixture(fixDefpolygon5042);
 
 
   //polygon5048 (polygon)
@@ -1888,8 +1888,8 @@ function choplifter(world, SCALE) {
       new b2Vec2(6.273 / SCALE, 15.92 / SCALE),
       new b2Vec2(-6.283 / SCALE, 15.92 / SCALE),
   ], 3);
-  var polygon5048 = world.CreateBody(bodyDefpolygon5048)
-    polygon5048.CreateFixture(fixDefpolygon5048);
+  var polygon5048 = world.CreateBody(bodyDefpolygon5048);
+  polygon5048.CreateFixture(fixDefpolygon5048);
 
   var chopperDensity = 2;
 
@@ -1930,12 +1930,12 @@ function choplifter(world, SCALE) {
       new b2Vec2((-26.848 - x_offset) / SCALE, (-5.102 - y_offset) / SCALE),
       new b2Vec2((27.503 - x_offset) / SCALE, (-5.102 - y_offset) / SCALE),
   ], 3);
-  var polygon5132 = world.CreateBody(bodyDefpolygon5132)
-    chopperFaceRight.CreateFixture(fixDefpolygon5132);chopperFaceRight_Y
+  var polygon5132 = world.CreateBody(bodyDefpolygon5132);
+  chopperFaceRight.CreateFixture(fixDefpolygon5132);chopperFaceRight_Y
 
 
-    //polygon5127 (polygon)
-    var bodyDefpolygon5127 = new b2BodyDef;
+  //polygon5127 (polygon)
+  var bodyDefpolygon5127 = new b2BodyDef;
   var fixDefpolygon5127 = new b2FixtureDef;
   fixDefpolygon5127.filter.categoryBits = 2;
   fixDefpolygon5127.filter.maskBits = 1;
@@ -1954,8 +1954,8 @@ function choplifter(world, SCALE) {
       new b2Vec2((-29.605 - x_offset) / SCALE, (-5.584 - y_offset) / SCALE),
       new b2Vec2((-0.326 - x_offset) / SCALE, (-6.938 - y_offset) / SCALE),
   ], 3);
-  var polygon5127 = world.CreateBody(bodyDefpolygon5127)
-    chopperFaceRight.CreateFixture(fixDefpolygon5127);
+  var polygon5127 = world.CreateBody(bodyDefpolygon5127);
+  chopperFaceRight.CreateFixture(fixDefpolygon5127);
 
 
   //polygon5129 (polygon)
@@ -1978,8 +1978,8 @@ function choplifter(world, SCALE) {
       new b2Vec2((-4.992 - x_offset) / SCALE, (2.612 - y_offset) / SCALE),
       new b2Vec2((-28.964 - x_offset) / SCALE, (2.671 - y_offset) / SCALE),
   ], 3);
-  var polygon5129 = world.CreateBody(bodyDefpolygon5129)
-    chopperFaceRight.CreateFixture(fixDefpolygon5129);
+  var polygon5129 = world.CreateBody(bodyDefpolygon5129);
+  chopperFaceRight.CreateFixture(fixDefpolygon5129);
 
 
   //circle_18_ (circle)
@@ -2000,17 +2000,17 @@ function choplifter(world, SCALE) {
 
   fixDefcircle_18_.shape = circleShape;
   bodyDefcircle_18_.position.Set(138.932 / SCALE, 279.761 / SCALE);
-  var circle_18_ = world.CreateBody(bodyDefcircle_18_)
-    chopperFaceRight.CreateFixture(fixDefcircle_18_);
+  var circle_18_ = world.CreateBody(bodyDefcircle_18_);
+  chopperFaceRight.CreateFixture(fixDefcircle_18_);
 
   chopperFaceRight.angularDamping = 3;
-  chopperFaceRight.SetActive(true)
-    /* END CHOPPER-FACERIGHT */
+  chopperFaceRight.SetActive(true);
+  /* END CHOPPER-FACERIGHT */
 
 
-    /* BEGIN CHOPPER-FACELEFT */
-    //circle_6_ (circle)
-    var bodyDefcircle_6_ = new b2BodyDef;
+  /* BEGIN CHOPPER-FACELEFT */
+  //circle_6_ (circle)
+  var bodyDefcircle_6_ = new b2BodyDef;
   var fixDefcircle_6_ = new b2FixtureDef;
   fixDefcircle_6_.filter.categoryBits = 2;
   fixDefcircle_6_.filter.maskBits = 1;
@@ -2234,94 +2234,93 @@ function choplifter(world, SCALE) {
 
 
   /* BEGIN JOINTS */
-  var joint;
 
   //boyhead && polygon4600 (boy)
-  joint = new b2WeldJointDef();   
+  var joint = new b2WeldJointDef();   
   joint.Initialize(polygon4600, boyhead, polygon4600.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //rect4719 && polygon4721 (starttower)
-  joint = new b2WeldJointDef();   
+  var joint = new b2WeldJointDef();   
   joint.Initialize(rect4719, polygon4721, polygon4721.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //polygon5040 && polygon5042 (swingbase)
-  joint = new b2WeldJointDef();   
+  var joint = new b2WeldJointDef();   
   joint.Initialize(polygon5040, polygon5042, polygon5040.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //polygon5048 && polygon5042 (swinghinge)
-  joint = new b2RevoluteJointDef();   
+  var joint = new b2RevoluteJointDef();   
   joint.Initialize(polygon5048, polygon5042, polygon5048.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //circle_20_ && polyline4931 (weight)
-  joint = new b2WeldJointDef();   
+  var joint = new b2WeldJointDef();   
   joint.Initialize(circle_20_, polyline4931, polyline4931.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //circle_21_ && polyline4945 (weight_1_)
-  joint = new b2WeldJointDef();   
+  var joint = new b2WeldJointDef();   
   joint.Initialize(circle_21_, polyline4945, polyline4945.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //circle_12_ && polyline4959 (weight_2_)
-  joint = new b2WeldJointDef();   
+  var joint = new b2WeldJointDef();   
   joint.Initialize(circle_12_, polyline4959, polyline4959.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //circle_13_ && polyline4973 (weight_3_)
-  joint = new b2WeldJointDef();   
+  var joint = new b2WeldJointDef();   
   joint.Initialize(circle_13_, polyline4973, polyline4973.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //circle_14_ && polyline4987 (weight_4_)
-  joint = new b2WeldJointDef();   
+  var joint = new b2WeldJointDef();   
   joint.Initialize(circle_14_, polyline4987, polyline4987.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //wheel && polygon4899 (bicycle and tiny wheel)
-  joint = new b2RevoluteJointDef();   
+  var joint = new b2RevoluteJointDef();   
   joint.Initialize(wheel, polygon4899, wheel.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //circle_16_ && polygon4899 (bicycle and big wheel)
-  joint = new b2RevoluteJointDef();   
+  var joint = new b2RevoluteJointDef();   
   joint.Initialize(circle_16_, polygon4899, circle_16_.GetWorldCenter());
   world.CreateJoint(joint);  
 
 
   //rect4915 && polygon4917 (carbody and cabin)
-  joint = new b2WeldJointDef();   
+  var joint = new b2WeldJointDef();   
   joint.Initialize(rect4915, polygon4917, polygon4917.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //wheel_3_ && rect4915 (carbody and wheel1)
-  joint = new b2RevoluteJointDef();   
+  var joint = new b2RevoluteJointDef();   
   joint.Initialize(wheel_3_, rect4915, wheel_3_.GetWorldCenter());
   world.CreateJoint(joint);  
 
 
   //wheel_4_ && rect4915 (carbody and wheel2)
-  joint = new b2RevoluteJointDef();   
+  var joint = new b2RevoluteJointDef();   
   joint.Initialize(wheel_4_, rect4915, wheel_4_.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //circle_8_ && polygon4665 (bigwheel and crank)
-  joint = new b2RevoluteJointDef();   
+  var joint = new b2RevoluteJointDef();   
   joint.Initialize(circle_8_, polygon4665, circle_8_.GetWorldCenter());
   joint.motorSpeed = Math.PI / 2;
   joint.maxMotorTorque = 10;
@@ -2330,37 +2329,37 @@ function choplifter(world, SCALE) {
 
 
   //circle_9_ && polygon4665 (tinywheel and crank)
-  joint = new b2WeldJointDef();   
+  var joint = new b2WeldJointDef();   
   joint.Initialize(circle_9_, polygon4665, circle_9_.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //rect4871 && polygon4873 (stroller)
-  joint = new b2WeldJointDef();   
+  var joint = new b2WeldJointDef();   
   joint.Initialize(rect4871, polygon4873, polygon4873.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //circle_19_ && rect4871 (stroller)
-  joint = new b2WeldJointDef();   
+  var joint = new b2WeldJointDef();   
   joint.Initialize(rect4871, circle_19_, circle_19_.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //wheel_1_ && rect4871 (stroller)
-  joint = new b2RevoluteJointDef();   
+  var joint = new b2RevoluteJointDef();   
   joint.Initialize(wheel_1_, rect4871, wheel_1_.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //wheel_2_ && rect4871 (stroller)
-  joint = new b2RevoluteJointDef();   
+  var joint = new b2RevoluteJointDef();   
   joint.Initialize(wheel_2_, rect4871, wheel_2_.GetWorldCenter());
   world.CreateJoint(joint);
 
 
   //physics_35_ && physics_69_ (righthatch)
-  joint = new b2RevoluteJointDef();
+  var joint = new b2RevoluteJointDef();
   joint.bodyA = physics_35_;
   joint.bodyB = physics_69_;
   joint.localAnchorA.Set(-22.8955 / SCALE, -35.0 / SCALE);
@@ -2371,7 +2370,7 @@ function choplifter(world, SCALE) {
 
 
   //physics_39_ && physics_70_ (lefthatch)
-  joint = new b2RevoluteJointDef();
+  var joint = new b2RevoluteJointDef();
   joint.bodyA = physics_39_;
   joint.bodyB = physics_70_;
   joint.localAnchorA.Set(47.0 / SCALE, -22.0 / SCALE);
@@ -2382,7 +2381,7 @@ function choplifter(world, SCALE) {
 
 
   //physics_57_ && hatch2 (hatch2)
-  joint = new b2RevoluteJointDef();
+  var joint = new b2RevoluteJointDef();
   joint.bodyA = physics_57_;
   joint.bodyB = hatch2;
   joint.localAnchorA.Set(0, 0);
@@ -2393,7 +2392,8 @@ function choplifter(world, SCALE) {
 
 
   //lefthook && hookcenter
-  lefthook_joint = new b2WeldJointDef();
+  var lefthook_joint = new b2WeldJointDef();
+  lefthook_joint.referenceAngle = 0.10 * (2 * Math.PI);
   lefthook_joint.bodyA = lefthook;
   lefthook_joint.bodyB = hookcenter;
   lefthook_joint.localAnchorA.Set(0, 2.186 / SCALE);
@@ -2402,7 +2402,8 @@ function choplifter(world, SCALE) {
 
 
   //righthook && hookcenter
-  righthook_joint = new b2WeldJointDef();
+  var righthook_joint = new b2WeldJointDef();
+  righthook_joint.referenceAngle = -0.10 * (2 * Math.PI);
   righthook_joint.bodyA = righthook;
   righthook_joint.bodyB = hookcenter;
   righthook_joint.localAnchorA.Set(0, 0);
@@ -2418,8 +2419,6 @@ function choplifter(world, SCALE) {
   hookJointDef.localAnchorB.Set(0 / SCALE, 8.501 / SCALE);
   hookJointDef.length = 0.5;
   hookJointDef.collideConnected = true;
-  hookJointDef.frequencyHz = 0;
-  hookJointDef.dampingRatio = 0.01;
   rope = world.CreateJoint(hookJointDef);
   /* END JOINTS */
 }
