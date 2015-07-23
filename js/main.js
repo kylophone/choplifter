@@ -77,12 +77,10 @@ function box2d_init(){
   document.addEventListener("keydown", function(e){
     switch(e.keyCode) {
       case 74: //j
-        yVector -= 0.05;
+        yVector -= 0.004 * (chopperGravitionalForce + 2);
         break;
       case 70: //f
-        if (chopperForce.y < 0) {
-          yVector += 0.05;
-        }
+          yVector += 0.004 * (chopperGravitionalForce + 2);
         break; 
       case 75: //k
         if (activeChopper.GetAngle() < ((2 * Math.PI) * (20 / 360))) {
@@ -209,11 +207,18 @@ function box2d_init(){
     }
   }
 
-
-  var yVector = -(activeChopper.GetMass() * gravity.y) + 2;
+  var chopperGravitionalForce = activeChopper.GetMass() * gravity.y; 
+  var yVector = 0.99 * (-chopperGravitionalForce + 2);
   var chopperForce = new b2Vec2(0, -2);
   function update_chopper_forces() {
     var updateForce = activeChopper.GetWorldVector(chopperForce);
+
+    if (yVector < 1.10 * (-chopperGravitionalForce + 2)) {
+      yVector = 1.10 * (-chopperGravitionalForce + 2);
+    } else if (yVector > 0.90 * (-chopperGravitionalForce + 2)) {
+      yVector = 0.90 * (-chopperGravitionalForce + 2);
+    }
+
     updateForce.y += yVector;
     return updateForce;
   }
