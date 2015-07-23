@@ -10,11 +10,13 @@ function box2d_init(){
   var b2DebugDraw = Box2D.Dynamics.b2DebugDraw;
   var b2MouseJointDef =  Box2D.Dynamics.Joints.b2MouseJointDef;
 
-  var gravity = new b2Vec2(0, 8);
-  var objects_can_sleep = true;
-  var world = new b2World(gravity, objects_can_sleep);
   var SCALE = 30;
+  var objects_can_sleep = true;
+  var gravity = new b2Vec2(0, 8);
+  world = new b2World(gravity, objects_can_sleep);
   choplifter(world, SCALE);
+
+  window.setInterval(update, 1000 / 60);
 
   //setup debug draw
   var debugDraw = new b2DebugDraw();
@@ -24,8 +26,6 @@ function box2d_init(){
   debugDraw.SetLineThickness(0.5);
   debugDraw.SetFlags(b2DebugDraw.e_shapeBit | b2DebugDraw.e_jointBit);
   world.SetDebugDraw(debugDraw);
-
-  window.setInterval(update, 1000 / 60);
 
   //mouse
   var mouseX, mouseY, mousePVec, isMouseDown, selectedBody, mouseJoint;
@@ -72,6 +72,7 @@ function box2d_init(){
     return true;
   }
 
+  var clawAngle = 0;
 
   /* DETECT KEYPRESS */
   document.addEventListener("keydown", function(e){
@@ -103,8 +104,28 @@ function box2d_init(){
         }
         break;
       case 186: //;
+        clawAngle = leftClaw.m_referenceAngle - ((2 / 360) * (2 * Math.PI));
+        if (clawAngle < 0) {
+          clawAngle = 0;
+        }
+        righthookJointDef.referenceAngle = -clawAngle;
+        world.DestroyJoint(rightClaw);
+        rightClaw = world.CreateJoint(righthookJointDef);
+        lefthookJointDef.referenceAngle = clawAngle;
+        world.DestroyJoint(leftClaw);
+        leftClaw = world.CreateJoint(lefthookJointDef);
         break;
       case 65: //a
+        clawAngle = leftClaw.m_referenceAngle + ((2 / 360) * (2 * Math.PI));
+        if (clawAngle > (0.15 * 2 * Math.PI)) {
+          clawAngle = 0.15 * 2 * Math.PI; 
+        }
+        righthookJointDef.referenceAngle = -clawAngle;
+        world.DestroyJoint(rightClaw);
+        rightClaw = world.CreateJoint(righthookJointDef);
+        lefthookJointDef.referenceAngle = clawAngle;
+        world.DestroyJoint(leftClaw);
+        leftClaw = world.CreateJoint(lefthookJointDef);
         break;
     };
   }, true);
@@ -169,6 +190,7 @@ function box2d_init(){
   var activeChopper = chopperFaceRight;
   var inactiveChopper = chopperFaceLeft;
   var chopperChangeDirection = false;
+
   function update_choppers() {
     inactiveChopper.SetPosition(activeChopper.GetWorldCenter());
     inactiveChopper.SetAngle(activeChopper.GetAngle());
@@ -207,16 +229,18 @@ function box2d_init(){
     }
   }
 
+
   var chopperGravitionalForce = activeChopper.GetMass() * gravity.y; 
   var yVector = 0.99 * (-chopperGravitionalForce + 2);
   var chopperForce = new b2Vec2(0, -2);
+
   function update_chopper_forces() {
     var updateForce = activeChopper.GetWorldVector(chopperForce);
 
-    if (yVector < 1.10 * (-chopperGravitionalForce + 2)) {
-      yVector = 1.10 * (-chopperGravitionalForce + 2);
-    } else if (yVector > 0.90 * (-chopperGravitionalForce + 2)) {
-      yVector = 0.90 * (-chopperGravitionalForce + 2);
+    if (yVector < 1.05 * (-chopperGravitionalForce + 2)) {
+      yVector = 1.05 * (-chopperGravitionalForce + 2);
+    } else if (yVector > 0.95 * (-chopperGravitionalForce + 2)) {
+      yVector = 0.95 * (-chopperGravitionalForce + 2);
     }
 
     updateForce.y += yVector;

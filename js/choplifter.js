@@ -2394,23 +2394,23 @@ function choplifter(world, SCALE) {
 
 
   //lefthook && hookcenter
-  var lefthook_joint = new b2WeldJointDef();
-  lefthook_joint.referenceAngle = 0.10 * (2 * Math.PI);
-  lefthook_joint.bodyA = lefthook;
-  lefthook_joint.bodyB = hookcenter;
-  lefthook_joint.localAnchorA.Set(0, 2.186 / SCALE);
-  lefthook_joint.localAnchorB.Set(0, 0);
-  world.CreateJoint(lefthook_joint);
+  lefthookJointDef = new b2WeldJointDef();
+  lefthookJointDef.referenceAngle = 0;
+  lefthookJointDef.bodyA = lefthook;
+  lefthookJointDef.bodyB = hookcenter;
+  lefthookJointDef.localAnchorA.Set(0, 2.186 / SCALE);
+  lefthookJointDef.localAnchorB.Set(0, 0);
+  leftClaw = world.CreateJoint(lefthookJointDef);
 
 
   //righthook && hookcenter
-  var righthook_joint = new b2WeldJointDef();
-  righthook_joint.referenceAngle = -0.10 * (2 * Math.PI);
-  righthook_joint.bodyA = righthook;
-  righthook_joint.bodyB = hookcenter;
-  righthook_joint.localAnchorA.Set(0, 0);
-  righthook_joint.localAnchorB.Set(0, 0);
-  world.CreateJoint(righthook_joint);
+  righthookJointDef = new b2WeldJointDef();
+  righthookJointDef.referenceAngle = 0;
+  righthookJointDef.bodyA = righthook;
+  righthookJointDef.bodyB = hookcenter;
+  righthookJointDef.localAnchorA.Set(0, 0);
+  righthookJointDef.localAnchorB.Set(0, 0);
+  rightClaw = world.CreateJoint(righthookJointDef);
 
 
   //distance joint for chopper and hookcenter
