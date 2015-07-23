@@ -2,8 +2,8 @@
 
 Inside the <a href="http://en.wikipedia.org/wiki/Teenage_Engineering_OP-1">Teenage Engineering OP-1</a> there's a beautiful little choplifter game. This is a javascript clone. In-progress!
 
-##demo
-In progress. Try pressing keys `d`, `f`, `j`, & `k`. You can also you use your mouse cursor to toss the objects around. 
+##Debug demo
+<a href="https://kylophone.github.io/choplifter">In progress</a>. Try pressing keys `s`, `d`, `f` and  `j`, `k`, `l`. You can also you use your mouse cursor to toss the objects around.
 
 ##lander.svg
 After running `binwalk` on the firmware for the OP-1, poke around the files and you'll find lots of interesting things. You'll see that all of the OP-1's display & animations are done by manipulating svg images. There's a file called `lander.svg` which can be peeled back to reveal everything in the choplifter world, including its physics layer.
