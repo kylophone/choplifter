@@ -2416,7 +2416,7 @@ function choplifter(world, SCALE) {
   hookJointDef.bodyA = hookcenter;
   hookJointDef.localAnchorA.Set(0, 0);
   hookJointDef.localAnchorB.Set(0 / SCALE, 8.501 / SCALE);
-  hookJointDef.length = 20 / SCALE;
+  hookJointDef.length = 0.5;
   hookJointDef.collideConnected = true;
   hookJointDef.frequencyHz = 0;
   hookJointDef.dampingRatio = 0.01;

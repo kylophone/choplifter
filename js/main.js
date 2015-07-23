@@ -210,8 +210,8 @@ function box2d_init(){
   }
 
 
-  var yVector = 0;
-  var chopperForce = new b2Vec2(0, 1.02 * -(activeChopper.GetMass() * gravity.y));
+  var yVector = -(activeChopper.GetMass() * gravity.y) + 2;
+  var chopperForce = new b2Vec2(0, -2);
   function update_chopper_forces() {
     var updateForce = activeChopper.GetWorldVector(chopperForce);
     updateForce.y += yVector;
