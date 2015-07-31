@@ -5,18 +5,27 @@ function box2d_init(){
   var b2Body = Box2D.Dynamics.b2Body;
   var b2FixtureDef = Box2D.Dynamics.b2FixtureDef;
   var b2Fixture = Box2D.Dynamics.b2Fixture;
-  var b2World = Box2D.Dynamics.b2World;
   var b2MassData = Box2D.Collision.Shapes.b2MassData;
   var b2DebugDraw = Box2D.Dynamics.b2DebugDraw;
   var b2MouseJointDef =  Box2D.Dynamics.Joints.b2MouseJointDef;
 
-  var SCALE = 30;
-  var objects_can_sleep = true;
-  var gravity = new b2Vec2(0, 8);
-  world = new b2World(gravity, objects_can_sleep);
-  choplifter(world, SCALE);
+
+  var CHOPLIFTER = choplifter();
+  var world = CHOPLIFTER.world;
+  var SCALE = CHOPLIFTER.SCALE;
+  var gravity = CHOPLIFTER.gravity;
+  var chopperFaceRight = CHOPLIFTER.chopperFaceRight;
+  var chopperFaceLeft = CHOPLIFTER.chopperFaceLeft;
+  var hookcenter = CHOPLIFTER.hookcenter;
+  var leftClaw = CHOPLIFTER.leftClaw;
+  var lefthookJointDef = CHOPLIFTER.lefthookJointDef;
+  var righthookJointDef = CHOPLIFTER.righthookJointDef;
+  var rightClaw = CHOPLIFTER.rightClaw;
+  var hookJointDef = CHOPLIFTER.hookJointDef;
+  var rope = CHOPLIFTER.rope;
 
   window.setInterval(update, 1000 / 60);
+
 
   //setup debug draw
   var debugDraw = new b2DebugDraw();

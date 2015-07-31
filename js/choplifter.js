@@ -1,6 +1,6 @@
 /* Initialization for all bodies, fixtures, and joints. */
 
-function choplifter(world, SCALE) {
+function choplifter() {
   var b2BodyDef = Box2D.Dynamics.b2BodyDef;
   var b2Body = Box2D.Dynamics.b2Body;
   var b2FixtureDef = Box2D.Dynamics.b2FixtureDef;
@@ -11,6 +11,12 @@ function choplifter(world, SCALE) {
   var b2RevoluteJointDef = Box2D.Dynamics.Joints.b2RevoluteJointDef;
   var b2WeldJointDef = Box2D.Dynamics.Joints.b2WeldJointDef;
   var b2DistanceJointDef =  Box2D.Dynamics.Joints.b2DistanceJointDef;
+  var b2World = Box2D.Dynamics.b2World;
+
+  var objects_can_sleep = true;
+  var gravity = new b2Vec2(0, 8);
+  var world = new b2World(gravity, objects_can_sleep);
+  var SCALE = 30;
 
 
   //addedRect_ironbar_2_ (rect)
@@ -1905,8 +1911,8 @@ function choplifter(world, SCALE) {
   bodyDefcircle_17_.type = b2Body.b2_dynamicBody;
   fixDefcircle_17_.shape = new b2CircleShape(8.501 / SCALE);
   bodyDefcircle_17_.position.Set(175.378 / SCALE, 279.76 / SCALE);
-  chopperFaceRight = world.CreateBody(bodyDefcircle_17_)
-    chopperFaceRight.CreateFixture(fixDefcircle_17_);
+  var chopperFaceRight = world.CreateBody(bodyDefcircle_17_)
+  chopperFaceRight.CreateFixture(fixDefcircle_17_);
   var chopperFaceRight_X = bodyDefcircle_17_.position.x * SCALE;
   var chopperFaceRight_Y = bodyDefcircle_17_.position.y * SCALE;
 
@@ -2020,7 +2026,7 @@ function choplifter(world, SCALE) {
   bodyDefcircle_6_.type = b2Body.b2_dynamicBody;
   fixDefcircle_6_.shape = new b2CircleShape(8.501 / SCALE);
   bodyDefcircle_6_.position.Set(161.12 / SCALE, 279.949 / SCALE);
-  chopperFaceLeft = world.CreateBody(bodyDefcircle_6_);
+  var chopperFaceLeft = world.CreateBody(bodyDefcircle_6_);
   chopperFaceLeft.CreateFixture(fixDefcircle_6_);
   var chopperFaceLeft_X = bodyDefcircle_6_.position.x * SCALE;
   var chopperFaceLeft_Y = bodyDefcircle_6_.position.y * SCALE;
@@ -2136,7 +2142,7 @@ function choplifter(world, SCALE) {
   bodyDefhookcenter.type = b2Body.b2_dynamicBody;
   fixDefhookcenter.shape = new b2CircleShape(3.624 / SCALE);
   bodyDefhookcenter.position.Set(168.064 / SCALE, 295.065 / SCALE);
-  hookcenter = world.CreateBody(bodyDefhookcenter);
+  var hookcenter = world.CreateBody(bodyDefhookcenter);
   hookcenter.CreateFixture(fixDefhookcenter);
   hookcenter.SetLinearDamping(1);
   hookcenter.SetActive(true);
@@ -2394,33 +2400,49 @@ function choplifter(world, SCALE) {
 
 
   //lefthook && hookcenter
-  lefthookJointDef = new b2WeldJointDef();
+  var lefthookJointDef = new b2WeldJointDef();
   lefthookJointDef.referenceAngle = 0;
   lefthookJointDef.bodyA = lefthook;
   lefthookJointDef.bodyB = hookcenter;
   lefthookJointDef.localAnchorA.Set(0, 2.186 / SCALE);
   lefthookJointDef.localAnchorB.Set(0, 0);
-  leftClaw = world.CreateJoint(lefthookJointDef);
+  var leftClaw = world.CreateJoint(lefthookJointDef);
 
 
   //righthook && hookcenter
-  righthookJointDef = new b2WeldJointDef();
+  var righthookJointDef = new b2WeldJointDef();
   righthookJointDef.referenceAngle = 0;
   righthookJointDef.bodyA = righthook;
   righthookJointDef.bodyB = hookcenter;
   righthookJointDef.localAnchorA.Set(0, 0);
   righthookJointDef.localAnchorB.Set(0, 0);
-  rightClaw = world.CreateJoint(righthookJointDef);
+  var rightClaw = world.CreateJoint(righthookJointDef);
 
 
   //distance joint for chopper and hookcenter
-  hookJointDef = new b2DistanceJointDef();
+  var hookJointDef = new b2DistanceJointDef();
   hookJointDef.bodyB = chopperFaceRight;
   hookJointDef.bodyA = hookcenter;
   hookJointDef.localAnchorA.Set(0, 0);
   hookJointDef.localAnchorB.Set(0 / SCALE, 8.501 / SCALE);
   hookJointDef.length = 0.5;
   hookJointDef.collideConnected = true;
-  rope = world.CreateJoint(hookJointDef);
+  var rope = world.CreateJoint(hookJointDef);
   /* END JOINTS */
+
+
+  return {
+    world : world,
+    gravity : gravity,
+    SCALE : SCALE,
+    chopperFaceRight : chopperFaceRight,
+    chopperFaceLeft : chopperFaceLeft,
+    hookcenter : hookcenter,
+    leftClaw : leftClaw,
+    lefthookJointDef : lefthookJointDef,
+    rightClaw : rightClaw,
+    righthookJointDef : righthookJointDef,
+    hookJointDef : hookJointDef,
+    rope : rope
+  }
 }
