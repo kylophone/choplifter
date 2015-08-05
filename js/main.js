@@ -117,27 +117,27 @@ function box2d_init(){
         if (clawAngle < 0) {
           clawAngle = 0;
         }
-        righthookJointDef.referenceAngle = -clawAngle;
-        world.DestroyJoint(rightClaw);
-        rightClaw = world.CreateJoint(righthookJointDef);
-        lefthookJointDef.referenceAngle = clawAngle;
-        world.DestroyJoint(leftClaw);
-        leftClaw = world.CreateJoint(lefthookJointDef);
+        update_pincher();
         break;
       case 65: //a
         clawAngle = leftClaw.m_referenceAngle + ((2 / 360) * (2 * Math.PI));
         if (clawAngle > (0.15 * 2 * Math.PI)) {
           clawAngle = 0.15 * 2 * Math.PI; 
         }
-        righthookJointDef.referenceAngle = -clawAngle;
-        world.DestroyJoint(rightClaw);
-        rightClaw = world.CreateJoint(righthookJointDef);
-        lefthookJointDef.referenceAngle = clawAngle;
-        world.DestroyJoint(leftClaw);
-        leftClaw = world.CreateJoint(lefthookJointDef);
+        update_pincher();
         break;
     };
   }, true);
+
+
+  function update_pincher() {
+    righthookJointDef.referenceAngle = -clawAngle;
+    world.DestroyJoint(rightClaw);
+    rightClaw = world.CreateJoint(righthookJointDef);
+    lefthookJointDef.referenceAngle = clawAngle;
+    world.DestroyJoint(leftClaw);
+    leftClaw = world.CreateJoint(lefthookJointDef);
+  }
 
 
   /* MAIN LOOP */
