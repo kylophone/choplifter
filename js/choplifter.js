@@ -1,6 +1,6 @@
 /* Initialization for all bodies, fixtures, and joints. */
 
-function choplifter() {
+function choplifter_init() {
   var b2BodyDef = Box2D.Dynamics.b2BodyDef;
   var b2Body = Box2D.Dynamics.b2Body;
   var b2FixtureDef = Box2D.Dynamics.b2FixtureDef;
@@ -1429,7 +1429,8 @@ function choplifter() {
       new b2Vec2(0.0 / SCALE, 12.556 / SCALE),
       new b2Vec2(-3.625 / SCALE, 6.278 / SCALE),
   ], 6);
-  world.CreateBody(bodyDefpolygon4557).CreateFixture(fixDefpolygon4557);
+  var hexagon = world.CreateBody(bodyDefpolygon4557)
+  hexagon.CreateFixture(fixDefpolygon4557);
 
 
   //polygon4587 (polygon)
@@ -2443,6 +2444,7 @@ function choplifter() {
     rightClaw : rightClaw,
     righthookJointDef : righthookJointDef,
     hookJointDef : hookJointDef,
-    rope : rope
+    rope : rope,
+    hexagon : hexagon    
   }
 }

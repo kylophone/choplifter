@@ -1,4 +1,4 @@
-function box2d_init(){
+function choplifter(){
   var b2Vec2 = Box2D.Common.Math.b2Vec2;
   var b2AABB = Box2D.Collision.b2AABB;
   var b2BodyDef = Box2D.Dynamics.b2BodyDef;
@@ -9,8 +9,7 @@ function box2d_init(){
   var b2DebugDraw = Box2D.Dynamics.b2DebugDraw;
   var b2MouseJointDef =  Box2D.Dynamics.Joints.b2MouseJointDef;
 
-
-  var CHOPLIFTER = choplifter();
+  var CHOPLIFTER = choplifter_init();
   var world = CHOPLIFTER.world;
   var SCALE = CHOPLIFTER.SCALE;
   var gravity = CHOPLIFTER.gravity;
@@ -23,65 +22,11 @@ function box2d_init(){
   var rightClaw = CHOPLIFTER.rightClaw;
   var hookJointDef = CHOPLIFTER.hookJointDef;
   var rope = CHOPLIFTER.rope;
+  hexagon = CHOPLIFTER.hexagon;
 
-  window.setInterval(update, 1000 / 60);
-
-
-  //setup debug draw
-  var debugDraw = new b2DebugDraw();
-  debugDraw.SetSprite(document.getElementById("canvas").getContext("2d"));
-  debugDraw.SetDrawScale(SCALE);
-  debugDraw.SetFillAlpha(0.5);
-  debugDraw.SetLineThickness(0.5);
-  debugDraw.SetFlags(b2DebugDraw.e_shapeBit | b2DebugDraw.e_jointBit);
-  world.SetDebugDraw(debugDraw);
-
-  //mouse
-  var mouseX, mouseY, mousePVec, isMouseDown, selectedBody, mouseJoint;
-  var canvas = document.getElementById("canvas");
-  var canvasPosition = getElementPosition(canvas);
-
-  document.addEventListener("mousedown", function(e) {
-    isMouseDown = true;
-    handleMouseMove(e);
-    document.addEventListener("mousemove", handleMouseMove, true);
-  }, true);
-
-  document.addEventListener("mouseup", function() {
-    document.removeEventListener("mousemove", handleMouseMove, true);
-    isMouseDown = false;
-    mouseX = undefined;
-    mouseY = undefined;
-  }, true);
-
-  function handleMouseMove(e) {
-    mouseX = (e.clientX - canvasPosition.x) / SCALE;
-    mouseY = (e.clientY - canvas.getBoundingClientRect().top) / SCALE;
-  };
-
-  function getBodyAtMouse() {
-    mousePVec = new b2Vec2(mouseX, mouseY);
-    var aabb = new b2AABB();
-    aabb.lowerBound.Set(mouseX - 0.001, mouseY - 0.001);
-    aabb.upperBound.Set(mouseX + 0.001, mouseY + 0.001);
-
-    // Query the world for overlapping shapes.
-    selectedBody = null;
-    world.QueryAABB(getBodyCB, aabb);
-    return selectedBody;
-  }
-
-  function getBodyCB(fixture) {
-    if(fixture.GetBody().GetType() != b2Body.b2_staticBody) {
-      if(fixture.GetShape().TestPoint(fixture.GetBody().GetTransform(), mousePVec)) {
-        selectedBody = fixture.GetBody();
-        return false;
-      }
-    }
-    return true;
-  }
-
-  var clawAngle = 0;
+  var rawSvg = rawSVG();
+  var draw = SVG('viewport');
+  store = draw.svg(rawSvg);
 
   /* DETECT KEYPRESS */
   document.addEventListener("keydown", function(e){
@@ -140,6 +85,7 @@ function box2d_init(){
   }
 
 
+  window.setInterval(update, 1000 / 60);
   /* MAIN LOOP */
   function update() {
     activeChopper.ApplyForce(update_chopper_forces(), activeChopper.GetWorldCenter());
@@ -175,31 +121,10 @@ function box2d_init(){
   }
 
 
-  function getElementPosition(element) {
-    var elem=element, tagname="", x=0, y=0;
-
-    while((typeof(elem) == "object") && (typeof(elem.tagName) != "undefined")) {
-      y += elem.offsetTop;
-      x += elem.offsetLeft;
-      tagname = elem.tagName.toUpperCase();
-
-      if(tagname == "BODY")
-        elem=0;
-
-      if(typeof(elem) == "object") {
-        if(typeof(elem.offsetParent) == "object")
-          elem = elem.offsetParent;
-      }
-    }
-
-    return {x: x, y: y};
-  }
-
-
   var activeChopper = chopperFaceRight;
   var inactiveChopper = chopperFaceLeft;
   var chopperChangeDirection = false;
-
+  /* UPDATE CHOPPERS */
   function update_choppers() {
     inactiveChopper.SetPosition(activeChopper.GetWorldCenter());
     inactiveChopper.SetAngle(activeChopper.GetAngle());
@@ -242,7 +167,7 @@ function box2d_init(){
   var chopperGravitionalForce = activeChopper.GetMass() * gravity.y; 
   var yVector = 0.99 * (-chopperGravitionalForce + 2);
   var chopperForce = new b2Vec2(0, -2);
-
+  /* UPDATE CHOPPER FORCES */
   function update_chopper_forces() {
     var updateForce = activeChopper.GetWorldVector(chopperForce);
 
@@ -255,4 +180,80 @@ function box2d_init(){
     updateForce.y += yVector;
     return updateForce;
   }
+
+
+  //setup debug draw
+  var debugDraw = new b2DebugDraw();
+  debugDraw.SetSprite(document.getElementById("canvas").getContext("2d"));
+  debugDraw.SetDrawScale(SCALE);
+  debugDraw.SetFillAlpha(0.3);
+  debugDraw.SetLineThickness(0.5);
+  debugDraw.SetFlags(b2DebugDraw.e_shapeBit | b2DebugDraw.e_jointBit);
+  world.SetDebugDraw(debugDraw);
+
+  //mouse
+  var mouseX, mouseY, mousePVec, isMouseDown, selectedBody, mouseJoint;
+  var canvas = document.getElementById("canvas");
+  var canvasPosition = getElementPosition(canvas);
+
+  document.addEventListener("mousedown", function(e) {
+    isMouseDown = true;
+    handleMouseMove(e);
+    document.addEventListener("mousemove", handleMouseMove, true);
+  }, true);
+
+  document.addEventListener("mouseup", function() {
+    document.removeEventListener("mousemove", handleMouseMove, true);
+    isMouseDown = false;
+    mouseX = undefined;
+    mouseY = undefined;
+  }, true);
+
+  function handleMouseMove(e) {
+    mouseX = (e.clientX - canvasPosition.x) / SCALE;
+    mouseY = (e.clientY - canvas.getBoundingClientRect().top) / SCALE;
+  };
+
+  function getBodyAtMouse() {
+    mousePVec = new b2Vec2(mouseX, mouseY);
+    var aabb = new b2AABB();
+    aabb.lowerBound.Set(mouseX - 0.001, mouseY - 0.001);
+    aabb.upperBound.Set(mouseX + 0.001, mouseY + 0.001);
+
+    // Query the world for overlapping shapes.
+    selectedBody = null;
+    world.QueryAABB(getBodyCB, aabb);
+    return selectedBody;
+  }
+
+  function getBodyCB(fixture) {
+    if(fixture.GetBody().GetType() != b2Body.b2_staticBody) {
+      if(fixture.GetShape().TestPoint(fixture.GetBody().GetTransform(), mousePVec)) {
+        selectedBody = fixture.GetBody();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function getElementPosition(element) {
+    var elem=element, tagname="", x=0, y=0;
+
+    while((typeof(elem) == "object") && (typeof(elem.tagName) != "undefined")) {
+      y += elem.offsetTop;
+      x += elem.offsetLeft;
+      tagname = elem.tagName.toUpperCase();
+
+      if(tagname == "BODY")
+        elem=0;
+
+      if(typeof(elem) == "object") {
+        if(typeof(elem.offsetParent) == "object")
+          elem = elem.offsetParent;
+      }
+    }
+
+    return {x: x, y: y};
+  }
+
 }
