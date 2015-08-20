@@ -11,7 +11,7 @@ function choplifter(){
 
   var CHOPLIFTER = choplifter_init();
   var world = CHOPLIFTER.world;
-  var SCALE = CHOPLIFTER.SCALE;
+  SCALE = CHOPLIFTER.SCALE;
   var gravity = CHOPLIFTER.gravity;
   var chopperFaceRight = CHOPLIFTER.chopperFaceRight;
   var chopperFaceLeft = CHOPLIFTER.chopperFaceLeft;
@@ -19,13 +19,14 @@ function choplifter(){
   var leftClaw = CHOPLIFTER.leftClaw;
   var lefthookJointDef = CHOPLIFTER.lefthookJointDef;
   var righthookJointDef = CHOPLIFTER.righthookJointDef;
-  var rightClaw = CHOPLIFTER.rightClaw;
+  rightClaw = CHOPLIFTER.rightClaw;
   var hookJointDef = CHOPLIFTER.hookJointDef;
   var rope = CHOPLIFTER.rope;
-  hexagon = CHOPLIFTER.hexagon;
+  var hexagon = CHOPLIFTER.hexagon;
+  triangle = CHOPLIFTER.triangle;
 
   var rawSvg = rawSVG();
-  var draw = SVG('viewport');
+  draw = SVG('viewport');
   store = draw.svg(rawSvg);
 
   /* DETECT KEYPRESS */
@@ -84,13 +85,17 @@ function choplifter(){
     leftClaw = world.CreateJoint(lefthookJointDef);
   }
 
-
   window.setInterval(update, 1000 / 60);
   /* MAIN LOOP */
   function update() {
     activeChopper.ApplyForce(update_chopper_forces(), activeChopper.GetWorldCenter());
     update_choppers();
     limit_chopper_angle();
+    
+    /* TESTER SVG ANIMATION */
+    SVG.get("triangle").rotate(triangle.GetAngle() * 180 / (Math.PI))
+    /* TESTER SVG ANIMATION */
+
 
     if(isMouseDown && (!mouseJoint)) {
       var body = getBodyAtMouse();
@@ -153,10 +158,10 @@ function choplifter(){
   }
 
 
-  function limit_chopper_angle() {
-    if (activeChopper.GetAngle() > ((2 * Math.PI) * (25 / 360))) {
-      activeChopper.SetAngle((2 * Math.PI) * (25 / 360))
-      activeChopper.SetAngularVelocity(0);
+    function limit_chopper_angle() {
+      if (activeChopper.GetAngle() > ((2 * Math.PI) * (25 / 360))) {
+        activeChopper.SetAngle((2 * Math.PI) * (25 / 360))
+        activeChopper.SetAngularVelocity(0);
     } else if (activeChopper.GetAngle() < (-1 * (2 * Math.PI) * (25 / 360))) {
       activeChopper.SetAngle(-1 * (2 * Math.PI) * (25 / 360))
       activeChopper.SetAngularVelocity(0);

@@ -1391,7 +1391,8 @@ function choplifter_init() {
       new b2Vec2(6.277 / SCALE, -10.874 / SCALE),
       new b2Vec2(12.555 / SCALE, 0.0 / SCALE),
   ], 3);
-  world.CreateBody(bodyDefpolygon4546).CreateFixture(fixDefpolygon4546);
+  var triangle = world.CreateBody(bodyDefpolygon4546);
+  triangle.CreateFixture(fixDefpolygon4546);
 
 
   //physics_75_ (polygon)
@@ -2445,6 +2446,7 @@ function choplifter_init() {
     righthookJointDef : righthookJointDef,
     hookJointDef : hookJointDef,
     rope : rope,
-    hexagon : hexagon    
+    hexagon : hexagon,    
+    triangle : triangle
   }
 }
