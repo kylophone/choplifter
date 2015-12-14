@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="1264px" height="700px" viewBox="0 0 1264 700" enable-background="new 0 0 1264 700" xml:space="preserve">
-<rect id="bg" x="-0.64" y="0" width="1264" height="700"/>
+<svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="1264px" height="700px" viewBox="0 0 1264 700" enable-background="new 0 0 1264 700" xml:space="preserve">
+<rect id="bg" x="0" y="0" width="1264" height="700"/>
 <g id="bgobjects">
   <g id="bghouse">
     <polyline fill="none" stroke="#4860A7" stroke-width="1.5" stroke-linecap="square" points="856.156,349.021 856.156,197.496     809.251,197.496 809.251,349.021   "/>
@@ -1041,9 +1041,9 @@
     <circle fill="none" stroke="#FFFF00" stroke-width="1.323" stroke-linecap="square" stroke-linejoin="round" cx="168.064" cy="295.065" r="3.624"/>
 </g>
 <g id="objects">
-  <g id="triangle">
+  <g>
     
-      <polygon id="triangleshape" fill="none" stroke="#FFFFFF" stroke-width="1.3231" stroke-linecap="square" stroke-linejoin="round" points="    648.019,319.478 654.296,308.604 660.574,319.478   "/>
+      <polygon id="triangle" fill="none" stroke="#FFFFFF" stroke-width="1.3231" stroke-linecap="square" stroke-linejoin="round" points="    648.019,319.478 654.296,308.604 660.574,319.478   "/>
     
   </g>
   <g id="hatch2">
@@ -1052,8 +1052,8 @@
     <path id="center_4_" fill="#FF395A" d="M298.817,502.405c0,1.044-0.852,1.892-1.896,1.892c-1.048,0-1.897-0.85-1.897-1.892    c0-1.05,0.853-1.898,1.897-1.898C297.966,500.505,298.817,501.355,298.817,502.405"/>
     
   </g>
-  <g id="hexagon">
-    <polygon fill="none" stroke="#FFFFFF" stroke-width="1.3231" stroke-linecap="square" stroke-linejoin="round" points="    615.964,343.693 612.339,337.415 615.964,331.137 623.212,331.137 626.837,337.415 623.212,343.693   "/>
+  <g>
+    <polygon id="hexagon"fill="none" stroke="#FFFFFF" stroke-width="1.3231" stroke-linecap="square" stroke-linejoin="round" points="    615.964,343.693 612.339,337.415 615.964,331.137 623.212,331.137 626.837,337.415 623.212,343.693   "/>
     
   </g>
   <g id="gastower">

@@ -1,13 +1,12 @@
 <html>
   <head>
+    <style> body { padding: 0px; margin: 0px; } </style>
     <script src="js/Box2dWeb-2.1.a.3.min.js"></script>
-    <script src="js/lander.svg.js"></script>
-    <script src="js/svg.min.js"></script>
+    <script src="js/loadSVG.js"></script>
     <script src="js/choplifter.js"></script>
     <script src="js/main.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
   </head>
-  <body onload="choplifter()">
+  <body onload="loadSVG()">
     <div id="viewport"></div>
     <canvas id="canvas" width="1264" height="700"></canvas>
   </body>

@@ -25,9 +25,5 @@ Having the lander.svg image is nice, but it'd also be nice to know more about wh
 Rebuilding the choplifter world with all its bodies and fixtures with <a href="https://code.google.com/p/box2dweb/">Box2dWeb</a> would require >2000 lines of javascript. Rather than coding this all out by hand, I decided to write a small Python script to parse all the circles, rectangles, and polygons in an SVG drawing and initalize a Box2dWeb world with all its physics bodies & fixtures. Check it out: <a href="https://github.com/kylophone/SVG-Box2dWeb">SVG-Box2dWeb</a>. About 90% of the code in `./js/choplifter.js` was generated using this script. 
 
 ##to-do
-* implement claw
 * implement scale & doors
-* animate with original .svg
 * implement sound
-
-
